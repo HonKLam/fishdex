@@ -1,0 +1,30 @@
+name: fisherdex
+services:
+  frontend:
+    image: fd-frontend
+    container_name: fd-frontend
+    build:
+      context: ./fd-frontend
+    ports:
+      - 80:80
+    networks:
+      - frontend
+      - backend
+    environment:
+      - NODE_ENV=production
+
+  backend:
+    image: fd-backend
+    container_name: fd-backend
+    build:
+      context: ./fd-backend
+    ports:
+      - 8080:8080
+    networks:
+      - backend
+    environment:
+      - NODE_ENV=production
+
+networks:
+  frontend:
+  backend:
