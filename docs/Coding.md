@@ -16,6 +16,8 @@
 
 (Falls hier nochmal Hilfe benötigt wird, kann Lam nochmal nen Git-Crashcourse machen)
 
+Wir arbeiten hauptsächlich im `dev`-Branch. Der `main`-Branch ist hauptsächlich ein Backup.
+
 ## Allgeiner Ablauf beim Coden
 
 ** Vor einem neuen Feature-Branch immer den dev-Branch auf den neusten Stand bringen **
