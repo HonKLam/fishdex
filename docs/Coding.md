@@ -16,8 +16,25 @@
 
 (Falls hier nochmal Hilfe benötigt wird, kann Lam nochmal nen Git-Crashcourse machen)
 
+## Allgeiner Ablauf beim Coden
+
+** Vor einem neuen Feature-Branch immer den dev-Branch auf den neusten Stand bringen **
+
+`git checkout dev`
+`git pull`
+
 - Erstell für jedes Feature einen neuen Git-Branch (zB. `feature/irgendein-feature`)
-- Mach deine Änderungen und lad sie in deinen Branch hoch
+
+(`git checkout -b feature/irgendein-feature`)
+
+- Mach deine Änderungen und lad sie in deinen lokalen Branch hoch
+
+(`git add .`, `git commit -m "Eine Commitnachricht hinzufügen"`)
+
+- Lad jz deine Commits in die Cloud in die repo hoch
+
+(`git push`)
+
 - Mach auf GitHub einen Pull Request, um in den `dev`-Branch zu mergen
 
 ## Code-Reviews
