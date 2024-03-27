@@ -1,15 +1,23 @@
 # Setup
+
 - [IntelliJ (Community Edition)](https://www.jetbrains.com/idea/download/?fromIDE=&section=mac) installieren
 - Java Software Development Kit (`jdk`) Version `21` in IntelliJ installieren
   - in Projekt-Einstellungen richtige Version auswählen - Link für Tutorial ist [hier](https://www.baeldung.com/intellij-change-java-version) (Es sollte bei SDK `coretto-21` stehen)
 - Richtige JDK-Version für Gradle anpassen - Link für Tutorial ist [hier](https://stackoverflow.com/questions/67079327/how-can-i-fix-unsupported-class-file-major-version-60-in-intellij-idea) (die erste Lösung)
 
 # Backend (alleine) zum Testen starten
+
 - Konsole öffnen
 - zum Projekt `fd-backend` navigieren (`cd Pfad/zum/Projekt/fishdex/fd-backend`), dann:
-`./gradlew bootRun` (Fragt Lam wenn unsicher) - Konsole offen lassen, der Server ist gestartet
+
+```
+./gradlew bootRun
+```
+
+(Fragt Lam wenn unsicher) - Konsole offen lassen, der Server ist gestartet
+
 - Geht in Browser auf Seite: `localhost:8080`
-- Ihr solltet ein ``Greetings from Spring Boot!`` auf der Seite sehen.
+- Ihr solltet ein `Greetings from Spring Boot!` auf der Seite sehen.
 - Konsole und Server schließen mit `STRG+C` (`CTRL+C` für Mac)
 
 ## Was macht das Backend

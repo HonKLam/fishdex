@@ -13,12 +13,21 @@ Alles was man für JS + React braucht installieren:
 - `yarn` installieren (sowas wie npm, solltest du kennen, notfalls frag Lam)
 
 Anschließend im `fd-frontend` Ordner in Konsole:
-`yarn` - Sollte alle Dependencies installieren
+
+```
+yarn
+```
+
+(Sollte alle Dependencies installieren)
 
 # Frontend (einzeln) starten
 
 - Konsole öffnen, `fd-frontend` navigieren
-  `yarn run dev`
+
+```
+yarn run dev
+```
+
 - In der Konsole sollte der Link stehen
 
 ## Was macht das Frontend?
