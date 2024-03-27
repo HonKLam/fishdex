@@ -26,9 +26,7 @@ docker compose up --build
 Es sollte bei `localhost:80` das Frontend starten und bei `localhost:8080` das Backend starten.
 (fragt Lam wenn Hilfe hier benötigt wird)
 
-```
-Wenn also das Frontend eine Anfrage an das Backend stellt, sollte die Adresse `localhost:8080` ansteuern.
-```
+**Wenn also das Frontend eine Anfrage an das Backend stellt, sollte die Adresse `localhost:8080` ansteuern.**
 
 ## Tickets
 
