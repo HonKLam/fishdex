@@ -1,4 +1,4 @@
-name: fisherdex
+name: Fishdex
 services:
   frontend:
     image: fd-frontend

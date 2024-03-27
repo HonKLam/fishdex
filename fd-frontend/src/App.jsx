@@ -1,10 +1,10 @@
-import "./App.css"
+import './App.css'
 
 function App() {
   return (
     <>
       <div>
-        <h1>Fisherdex</h1>
+        <h1>Fishdex</h1>
       </div>
     </>
   )
