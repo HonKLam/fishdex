@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 public class TestController {
+    // Hierüber haben wir dann Zugriff auf die Datenbank
     private final TestRepository testRepository;
 
     public TestController(TestRepository testRepository) {
@@ -19,6 +20,7 @@ public class TestController {
     @GetMapping("/")
     public String index() {return "Hello from Spring Boot Application!";}
 
+    // Testuser, die vorher reingeladen worden hier ausgeben
     @GetMapping("/testuser")
     public List<TestEntity> getAllUsers() {
         List<TestEntity> userList = new ArrayList<>();

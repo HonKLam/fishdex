@@ -22,6 +22,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	// Hier Tabellen / Repos der DB mit Daten füllen
 	@Bean
 	public CommandLineRunner initRepos(TestRepository testRepository) {
 		return (args) -> {

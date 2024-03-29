@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class TestEntity {
+    // Erstellt für jede Zeile in Tabelle ein Schlüsselattribut ergo ID
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -15,8 +16,10 @@ public class TestEntity {
     private Integer age;
     private String location;
 
+    // Das muss sein, weil Spring es so will
     public TestEntity() {}
 
+    // Eigenen Konstruktor trz möglich
     public TestEntity(String name, Integer age, String location) {
         this.name = name;
         this.age = age;
