@@ -18,7 +18,9 @@ public class TestController {
     }
 
     @GetMapping("/")
-    public String index() {return "Hello from Spring Boot Application!";}
+    public String index() {
+        return "Hello from Spring Boot Application!";
+    }
 
     // Testuser, die vorher reingeladen worden hier ausgeben
     @GetMapping("/testuser")
@@ -29,3 +31,5 @@ public class TestController {
     }
 
     // TODO - Test for POST
+
+}
