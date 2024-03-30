@@ -60,9 +60,9 @@ public class Application {
 
 			// Fetch an individual Fishdex by ID
 			Fishdex singleFishdex = fishdexRepository.findById(1);
-			log.info("Customer found with findById(1):");
+			log.info("Fishlist found with findById(1):");
 			log.info("--------------------------------");
-			log.info(singleFishdex.getFishList().get(0).getName());
+			log.info(singleFishdex.getFishList().toString());
 			log.info("");
 		};
 	}

@@ -12,7 +12,7 @@ public class Fishdex {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Fish> fishList = new ArrayList<>();
 
     protected Fishdex() {}
