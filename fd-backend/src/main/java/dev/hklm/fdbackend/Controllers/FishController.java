@@ -20,11 +20,15 @@ public class FishController {
         this.fishdexRepository = fishdexRepository;
     }
 
+    // alle Fischarten zurückgeben - findById(1) ist der erste Fishdex der beim Laden erstellt wurde
     @GetMapping("/fishdex")
     public List<Fish> getFishdex() {
         return fishdexRepository.findById(1).getFishList();
     }
 
+    /* Frontend sendet JSON in Form des Fischobjekts {"name":"string", "location":"string", ...}
+     -> wird durch @RequestBody zu einem Fish-Objekt gebaut
+     -> Repository holen, fish hinzufügen, wieder speichern */
     @PostMapping("/fish")
     public ResponseEntity<Object> addFish(@RequestBody Fish fish) {
         Fishdex fishdex = fishdexRepository.findById(1);

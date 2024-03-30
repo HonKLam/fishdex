@@ -49,21 +49,6 @@ public class Application {
 
 			Fishdex fishdex = new Fishdex(fishList);
 			fishdexRepository.save(fishdex);
-
-			// fetch all Fishdex
-			log.info("Fishdex found with findAll():");
-			log.info("-------------------------------");
-			fishdexRepository.findAll().forEach(dex -> {
-				log.info(dex.toString());
-			});
-			log.info("");
-
-			// Fetch an individual Fishdex by ID
-			Fishdex singleFishdex = fishdexRepository.findById(1);
-			log.info("Fishlist found with findById(1):");
-			log.info("--------------------------------");
-			log.info(singleFishdex.getFishList().toString());
-			log.info("");
 		};
 	}
 

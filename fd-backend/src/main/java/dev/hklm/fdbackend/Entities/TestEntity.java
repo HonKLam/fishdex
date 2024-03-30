@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+// Entity sind Objekte, die in der Datenbank gespeichert werden sollen
 @Entity
 public class TestEntity {
     // Erstellt für jede Zeile in Tabelle ein Schlüsselattribut ergo ID
