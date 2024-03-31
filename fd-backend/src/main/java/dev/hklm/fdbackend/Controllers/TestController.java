@@ -2,12 +2,14 @@ package dev.hklm.fdbackend.Controllers;
 
 import dev.hklm.fdbackend.Entities.TestEntity;
 import dev.hklm.fdbackend.Repositories.TestRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// Controller sind da, um die API-Schnittstellen zu beschreiben
 @RestController
 public class TestController {
     // Hierüber haben wir dann Zugriff auf die Datenbank
@@ -18,7 +20,9 @@ public class TestController {
     }
 
     @GetMapping("/")
-    public String index() {return "Hello from Spring Boot Application!";}
+    public String index() {
+        return "Hello from Spring Boot Application!";
+    }
 
     // Testuser, die vorher reingeladen worden hier ausgeben
     @GetMapping("/testuser")
@@ -28,5 +32,10 @@ public class TestController {
         return userList;
     }
 
-    // TODO - Test for POST
+    @PostMapping("/user")
+    public ResponseEntity<Object> addUser(@RequestBody TestEntity testEntity) {
+        testRepository.save(testEntity);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
 }
