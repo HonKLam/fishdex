@@ -6,7 +6,7 @@ services:
     build:
       context: ./fd-frontend
     ports:
-      - 80:80
+      - 81:80
     networks:
       - frontend
       - backend
