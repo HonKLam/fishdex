@@ -5,10 +5,7 @@ import dev.hklm.fdbackend.Entities.Fishdex;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,7 @@ public class FishController {
     }
 
     // alle Fischarten zurückgeben - findById(1) ist der erste Fishdex der beim Laden erstellt wurde
+    @CrossOrigin(origins = "http://localhost:81")
     @GetMapping("/fishdex")
     public List<Fish> getFishdex() {
         return fishdexRepository.findById(1).getFishList();
@@ -29,6 +27,7 @@ public class FishController {
     /* Frontend sendet JSON in Form des Fischobjekts {"name":"string", "location":"string", ...}
      -> wird durch @RequestBody zu einem Fish-Objekt gebaut
      -> Repository holen, fish hinzufügen, wieder speichern */
+    @CrossOrigin(origins = "http://localhost:81")
     @PostMapping("/fish")
     public ResponseEntity<Object> addFish(@RequestBody Fish fish) {
         Fishdex fishdex = fishdexRepository.findById(1);

@@ -1,4 +1,5 @@
 import './App.css'
+import TestComponent from './Components/TestComponent'
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <div>
         <h1>Fishdex</h1>
       </div>
+      <TestComponent />
     </>
   )
 }
