@@ -1,0 +1,15 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    .container {
+        position: absolute;
+        bottom: 0;
+    }
+    ul {
+        list-style: none;
+        justify-content: center;
+        gap: 50px;
+        display: flex;
+        flex-direction: row;
+    }
+}
