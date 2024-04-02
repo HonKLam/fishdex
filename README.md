@@ -23,7 +23,7 @@ Um also die App im aktuellen Zustand mit Frontend + Backend zu starten, folgende
 docker compose up --build
 ```
 
-Es sollte bei `localhost:80` das Frontend starten und bei `localhost:8080` das Backend starten.
+Es sollte bei `localhost:81` (81 weil es bei Nico aktuell ne anders geht) das Frontend starten und bei `localhost:8080` das Backend starten.
 (fragt Lam wenn Hilfe hier benötigt wird)
 
 **Wenn also das Frontend eine Anfrage an das Backend stellt, sollte die Adresse `localhost:8080` ansteuern.**
