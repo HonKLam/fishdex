@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -53,9 +55,12 @@ public class Application {
 
 			// -------------------------
 
-			Fish f1 = new Fish("Fred", "Dresden", "Wawa", false, 0);
-			Fish f2 = new Fish("Günther", "Chemnitz", "Wawa", false, 0);
-			Fish f3 = new Fish("Meier", "Leipzig", "Dawa", false, 0);
+			ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
+			byte[] fishExampleImage = FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream());
+
+			Fish f1 = new Fish("Fred", "Dresden", "Wawa", false, 0, "http://localhost:8080/fish/image/Fred", fishExampleImage);
+			Fish f2 = new Fish("Guenther", "Chemnitz", "Wawa", false, 0, "http://localhost:8080/fish/image/Guenther", fishExampleImage);
+			Fish f3 = new Fish("Meier", "Leipzig", "Dawa", false, 0, "http://localhost:8080/fish/image/Meier", fishExampleImage);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);

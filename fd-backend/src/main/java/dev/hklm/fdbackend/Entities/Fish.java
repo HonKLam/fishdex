@@ -21,12 +21,14 @@ public class Fish {
 
     public Fish() {};
 
-    public Fish(String name, String location, String water, Boolean caught, Integer counter) {
+    public Fish(String name, String location, String water, Boolean caught, Integer counter, String imgUrl, byte[] fishImage) {
         this.name = name;
         this.location = location;
         this.water = water;
         this.caught = caught;
         this.counter = counter;
+        this.imgUrl = imgUrl;
+        this.fishImage = fishImage;
     }
 
     public String getName() {
