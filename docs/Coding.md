@@ -20,24 +20,39 @@ Wir arbeiten hauptsächlich im `dev`-Branch. Der `main`-Branch ist hauptsächlic
 
 ## Allgeiner Ablauf beim Coden
 
-** Vor einem neuen Feature-Branch immer den dev-Branch auf den neusten Stand bringen **
+**Vor einem neuen Feature-Branch immer den dev-Branch auf den neusten Stand bringen**
 
-`git checkout dev`
-`git pull`
+```
+git checkout dev
+```
 
-- Erstell für jedes Feature einen neuen Git-Branch (zB. `feature/irgendein-feature`)
+```
+git pull
+```
 
-(`git checkout -b feature/irgendein-feature`)
+**Erstell für jedes Feature neuen Git-Branch (zB. `feature/irgendein-feature`)**
 
-- Mach deine Änderungen und lad sie in deinen lokalen Branch hoch
+```
+git checkout -b feature/irgendein-feature
+```
 
-(`git add .`, `git commit -m "Eine Commitnachricht hinzufügen"`)
+**Mach deine Änderungen und lad sie in deinen lokalen Branch hoch**
 
-- Lad jz deine Commits in die Cloud in die repo hoch
+```
+git add .
+```
 
-(`git push`)
+```
+git commit -m "Eine Commitnachricht hinzufügen"
+```
 
-- Mach auf GitHub einen Pull Request, um in den `dev`-Branch zu mergen
+**Lad jz deine Commits in die Cloud in die repo hoch**
+
+```
+git push
+```
+
+**Mach auf GitHub einen Pull Request, um in den `dev`-Branch zu mergen**
 
 ## Code-Reviews
 
