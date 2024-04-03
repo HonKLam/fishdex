@@ -1,9 +1,6 @@
 package dev.hklm.fdbackend.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Fish {
@@ -16,6 +13,11 @@ public class Fish {
     private String water;
     private Boolean caught;
     private Integer counter;
+    private String imgUrl;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] fishImage;
 
     public Fish() {};
 
@@ -45,5 +47,21 @@ public class Fish {
 
     public Integer getCounter() {
         return counter;
+    }
+
+    public byte[] getFishImage() {
+        return fishImage;
+    }
+
+    public void setFishImage(byte[] fishImage) {
+        this.fishImage = fishImage;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }
