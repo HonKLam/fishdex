@@ -28,13 +28,13 @@ public class FishController {
     }
 
     // Information von 1 Fischart bekommen
-    @GetMapping("/fish/info/{name}")
-    public ResponseEntity<Fish> getFish(@PathVariable("name") String fishName) {
+    @GetMapping("/fish/info/{id}")
+    public ResponseEntity<Fish> getFish(@PathVariable("id") Long fishId) {
         List<Fish> fishList = fishdexRepository.findById(1).getFishList();
 
         Fish foundFish = null;
         for (Fish fish : fishList) {
-            if (fish.getName().equals(fishName)) {
+            if (fish.getId().equals(fishId)) {
                 foundFish = fish;
             }
         }
@@ -46,14 +46,14 @@ public class FishController {
     }
 
     // Bild von 1 Fischart bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
-    @GetMapping("/fish/image/{name}")
-    public ResponseEntity<byte[]> getImageByFishName(@PathVariable("name") String fishName) {
+    @GetMapping("/fish/image/{id}")
+    public ResponseEntity<byte[]> getImageByFishName(@PathVariable("id") Long fishId) {
         Fishdex fishdex = fishdexRepository.findById(1);
         List<Fish> fishList = fishdex.getFishList();
 
         byte[] imageData = null;
         for (Fish fish : fishList) {
-            if (fish.getName().equals(fishName)) {
+            if (fish.getId().equals(fishId)) {
                 imageData = fish.getFishImage();
                 break;
             }
@@ -81,9 +81,9 @@ public class FishController {
     }
 
     // Custom-Bild für Fish hinzufügen
-    @PostMapping("/fish/upload/{name}")
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("name") String fishName) throws IOException {
-        if (image.isEmpty() || fishName.isEmpty()) {
+    @PostMapping("/fish/upload/{id}")
+    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long fishId) throws IOException {
+        if (image.isEmpty() || fishId.toString().isEmpty()) {
             return ResponseEntity.badRequest().body("Image or fish name cannot be empty");
         }
 
@@ -97,9 +97,9 @@ public class FishController {
 
         boolean found = false;
         for (Fish fish : fishList) {
-            if (fish.getName().equals(fishName)) {
+            if (fish.getId().equals(fishId)) {
                 fish.setFishImage(image.getBytes());
-                fish.setImgUrl(fishName);
+                fish.setImgUrl(fishId.toString());
                 found = true;
                 break;
             }
