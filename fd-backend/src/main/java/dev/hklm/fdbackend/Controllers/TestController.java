@@ -25,7 +25,6 @@ public class TestController {
     }
 
     // Testuser, die vorher reingeladen worden hier ausgeben
-    @CrossOrigin(origins = "http://localhost:81")
     @GetMapping("/testuser")
     public List<TestEntity> getAllUsers() {
         List<TestEntity> userList = new ArrayList<>();
@@ -33,7 +32,6 @@ public class TestController {
         return userList;
     }
 
-    @CrossOrigin(origins = "http://localhost:81")
     @PostMapping("/user")
     public ResponseEntity<Object> addUser(@RequestBody TestEntity testEntity) {
         testRepository.save(testEntity);
