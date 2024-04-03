@@ -27,6 +27,7 @@ public class FishController {
         return fishdexRepository.findById(1).getFishList();
     }
 
+    // Information von 1 Fischart bekommen
     @GetMapping("/fish/info/{name}")
     public ResponseEntity<Fish> getFish(@PathVariable("name") String fishName) {
         List<Fish> fishList = fishdexRepository.findById(1).getFishList();
@@ -44,6 +45,7 @@ public class FishController {
         return new ResponseEntity<>(foundFish, HttpStatus.OK);
     }
 
+    // Bild von 1 Fischart bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
     @GetMapping("/fish/image/{name}")
     public ResponseEntity<byte[]> getImageByFishName(@PathVariable("name") String fishName) {
         Fishdex fishdex = fishdexRepository.findById(1);
@@ -78,6 +80,7 @@ public class FishController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    // Custom-Bild für Fish hinzufügen
     @PostMapping("/fish/upload/{name}")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("name") String fishName) throws IOException {
         if (image.isEmpty() || fishName.isEmpty()) {
@@ -96,7 +99,7 @@ public class FishController {
         for (Fish fish : fishList) {
             if (fish.getName().equals(fishName)) {
                 fish.setFishImage(image.getBytes());
-                fish.setImgUrl("http://localhost:8080/fish/image/" + fishName);
+                fish.setImgUrl(fishName);
                 found = true;
                 break;
             }

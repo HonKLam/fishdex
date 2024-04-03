@@ -1,6 +1,10 @@
 package dev.hklm.fdbackend.Entities;
 
 import jakarta.persistence.*;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.FileCopyUtils;
+
+import java.io.IOException;
 
 @Entity
 public class Fish {
@@ -21,14 +25,18 @@ public class Fish {
 
     public Fish() {};
 
-    public Fish(String name, String location, String water, Boolean caught, Integer counter, String imgUrl, byte[] fishImage) {
+    public Fish(String name, String location, String water, Boolean caught, Integer counter) throws IOException {
         this.name = name;
         this.location = location;
         this.water = water;
         this.caught = caught;
         this.counter = counter;
-        this.imgUrl = imgUrl;
-        this.fishImage = fishImage;
+
+        /* Die Properties müssen nicht mitgegeben werden, wenn man POST /fish im Frontend macht.
+         Bitte nach POST /fish extra nochmal Fisch-Bild hochladen. */
+        this.imgUrl = "http://localhost:8080/fish/image/" + name;
+        ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
+        this.fishImage = FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream());
     }
 
     public String getName() {
@@ -63,7 +71,7 @@ public class Fish {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setImgUrl(String fishName) {
+        this.imgUrl = "http://localhost:8080/fish/image/" + fishName;
     }
 }
