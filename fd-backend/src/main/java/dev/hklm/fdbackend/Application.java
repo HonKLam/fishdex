@@ -53,9 +53,9 @@ public class Application {
 
 			// -------------------------
 
-			Fish f1 = new Fish("Fred", "Dresden", "Wawa", false, 0);
-			Fish f2 = new Fish("Günther", "Chemnitz", "Wawa", false, 0);
-			Fish f3 = new Fish("Meier", "Leipzig", "Dawa", false, 0);
+			Fish f1 = new Fish("Fred", "Dresden", "Wawa", false, 0, "1");
+			Fish f2 = new Fish("Guenther", "Chemnitz", "Wawa", false, 0, "2");
+			Fish f3 = new Fish("Meier", "Leipzig", "Dawa", false, 0, "3");
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);
