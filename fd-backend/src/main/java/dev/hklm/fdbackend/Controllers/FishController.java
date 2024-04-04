@@ -37,6 +37,7 @@ public class FishController {
         for (Fish fish : fishList) {
             if (fish.getId().equals(fishId)) {
                 foundFish = fish;
+                break;
             }
         }
 
