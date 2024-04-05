@@ -1,11 +1,12 @@
 import React from 'react'
 
 function fishdexEntry(data) {
-
-  return(
+  return (
     <div className="fishdex-entry">
       <div className="img-wrap">
-        <img src="https://placehold.co/600x400"/>
+        {data.imgUrl &&
+          <img src={data.imgUrl}/>
+        }
       </div>
       <div className="text-wrap">
         {data.name &&

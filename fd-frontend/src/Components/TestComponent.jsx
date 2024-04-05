@@ -1,5 +1,6 @@
 import { fetchData, postData } from '../api/api'
 import { useQuery, useMutation } from 'react-query'
+import React from "react";
 
 export default function TestComponent() {
     // GET REQUESTS
@@ -26,9 +27,16 @@ export default function TestComponent() {
 
     return (
         <div>
-            {data.map((obj) => {
-                return <div key={obj.name}>{obj.name}</div>
+            {data.map((item, index)=>{
+                return (
+                  <div className="fishdex-entry" key={index}>
+                      {item.name &&
+                        item.name
+                      }
+                  </div>
+                )
             })}
+
             <button onClick={handleClick}>Click Me</button>
         </div>
     )

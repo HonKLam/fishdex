@@ -1,6 +1,10 @@
 @import "header.css";
 @import "varibles.css";
 @import "footer.css";
+@import "fishdex-overview.css";
+@import "add-fish-form.css";
+
+
 
 
 body {
@@ -12,4 +16,7 @@ body {
     max-width: 1024px;
     padding: 0 5%;
     margin: auto    ;
+}
+.section {
+    padding-top: 30px;
 }

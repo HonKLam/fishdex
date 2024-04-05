@@ -1,7 +1,7 @@
 import React from 'react'
 function Header () {
   return (
-    <div className="section header">
+    <div className="header">
       <div className="container">
         <div className="row">
           <a href="localhost:5173" className="logo">
