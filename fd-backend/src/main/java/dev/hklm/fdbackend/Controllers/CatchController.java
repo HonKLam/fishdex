@@ -28,7 +28,7 @@ public class CatchController {
         return diaryRepository.findById(1).getCatchList();
     }
 
-    // Information von 1 Fischart bekommen
+    // Information von 1 Catch bekommen
     @GetMapping("/catch/info/{id}")
     public ResponseEntity<Catch> getCatch(@PathVariable("id") Long catchId) {
         List<Catch> catchList = diaryRepository.findById(1).getCatchList();
@@ -47,7 +47,7 @@ public class CatchController {
         return new ResponseEntity<>(foundCatch, HttpStatus.OK);
     }
 
-    // Bild von 1 Fischart bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
+    // Bild von 1 Catch bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
     @GetMapping("/catch/image/{id}")
     public ResponseEntity<byte[]> getImageByCatchName(@PathVariable("id") Long catchId) {
         Diary diary = diaryRepository.findById(1);
@@ -71,9 +71,9 @@ public class CatchController {
         return new ResponseEntity<>(imageData, headers, HttpStatus.OK);
     }
 
-    /* Frontend sendet JSON in Form des Fischobjekts {"name":"string", "location":"string", ...}
-     -> wird durch @RequestBody zu einem Fish-Objekt gebaut
-     -> Repository holen, fish hinzufügen, wieder speichern */
+    /* Frontend sendet JSON in Form des Catchobjekts {"location":"string", ...}
+     -> wird durch @RequestBody zu einem Catch-Objekt gebaut
+     -> Repository holen, Catch hinzufügen, wieder speichern */
     @PostMapping("/catch")
     public ResponseEntity<Object> addFish(@RequestBody Catch fishCatch) {
         Diary diary = diaryRepository.findById(1);

@@ -11,7 +11,7 @@ public class Diary {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    // Sag der Datenbank, dass die Liste an Fischen Java-Entities sind > sollen auch gespeichert werden
+    // Sag der Datenbank, dass die Liste an Fängen Java-Entities sind > sollen auch gespeichert werden
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Catch> catchList = new ArrayList<>();
 

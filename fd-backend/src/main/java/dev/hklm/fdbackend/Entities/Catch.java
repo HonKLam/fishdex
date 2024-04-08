@@ -31,8 +31,8 @@ public class Catch {
         this.fish = fish.getName();
         this.imageURL = "http://localhost:8080/catch/image/" + catchId;
 
-        /* Die Properties müssen nicht mitgegeben werden, wenn man POST /fish im Frontend macht.
-         Bitte nach POST /fish extra nochmal Fisch-Bild hochladen. */
+        /* Die Properties müssen nicht mitgegeben werden, wenn man POST /catch im Frontend macht.
+         Bitte nach POST /catch extra nochmal Fisch-Bild hochladen. */
         ClassPathResource catchPathRessource = new ClassPathResource("img/catch.png");
         this.catchImage = FileCopyUtils.copyToByteArray(catchPathRessource.getInputStream());
     }
