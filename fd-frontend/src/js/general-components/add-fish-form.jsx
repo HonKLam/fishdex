@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { useMutation } from 'react-query'
-import { postData } from '../../api/api.js'
+import {useMutation, useQuery} from 'react-query'
+import {fetchData, postData} from '../../api/api.js'
 
 function addFishkindForm() {
     const [fishName, setFishName] = useState('')
@@ -11,11 +11,25 @@ function addFishkindForm() {
     const [notEdibleChecked, setNotEdibleChecked] = useState(false)
     const [freshwaterChecked, setFreshwaterChecked] = useState(false)
     const [saltwaterChecked, setSaltwaterChecked] = useState(false)
-
+    const [file, setFile] = useState(null);
+    
     const { mutate } = useMutation((data) => postData('/fish', data))
+
+    const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const base64Data = reader.result.split(',')[1]; // Extract base64 data
+            setFile(base64Data); // Set base64 data to state
+        };
+
+        reader.readAsDataURL(selectedFile); // Read file as data URL (base64)
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        console.log()
         if (!notEdibleChecked && !edibleChecked) {
             alert('Bitte geben Sie an, ob der Fisch essbar ist.')
             return
@@ -33,8 +47,10 @@ function addFishkindForm() {
             bait: bait,
             edible: edibleChecked,
             count: 0,
+            fishImage: file,
         }
         mutate(data)
+        setIsSubmitted(true)
     }
 
     const handleName = (event) => {
@@ -59,7 +75,10 @@ function addFishkindForm() {
             setNotEdibleChecked(false)
         }
     }
-
+    
+    const handleImg = (event) => {
+        setImage(event.target.value)
+    }
     const handleNotEdibleChange = (event) => {
         setNotEdibleChecked(event.target.checked)
         if (event.target.checked) {
@@ -86,12 +105,8 @@ function addFishkindForm() {
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <div className="row">
-                        <input
-                            type="file"
-                            accept="image/*"
-                            id="fish-img"
-                            name="fishImage"
-                        />
+                        <input type="file" onChange={handleFileChange}/>
+
                     </div>
                     <div className="row">
                         <label>Fischart</label>
