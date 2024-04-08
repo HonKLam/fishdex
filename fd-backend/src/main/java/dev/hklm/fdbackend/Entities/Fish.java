@@ -29,25 +29,21 @@ public class Fish {
 
     public Fish(
             Integer counter,
-            Long fishId, //changed from String to Lond >>> Problems?
             String name,
             String water,
             String bait,
             Boolean edible,
             String extraInfo,
-            String imgUrl
+            Long fishId
     ) throws IOException {
 
-
-
         this.counter = counter;
-        this.id = fishId;
         this.name = name;
         this.water = water;
         this.bait = bait;
         this.edible = edible;
         this.extraInfo = extraInfo;
-        this.imgUrl = "http://localhost:8080/fish/image/" + fishId;
+        this.imgUrl = "http://localhost:8080/fish/image/" + fishId.toString();
 
         /* Die Properties müssen nicht mitgegeben werden, wenn man POST /fish im Frontend macht.
          Bitte nach POST /fish extra nochmal Fisch-Bild hochladen. */
@@ -83,10 +79,6 @@ public class Fish {
 
     public void setFishImage(byte[] fishImage) {
         this.fishImage = fishImage;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
     }
 
     public void setImgUrl(String fishId) {

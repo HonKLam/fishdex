@@ -56,9 +56,9 @@ public class Application {
 			// String bait, Boolean edible, String extraInfo, String imgUrl
 
 
-			Fish f1 = new Fish( 0, 1L, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", "url" );
-			Fish f2 = new Fish( 0, 2L, "Neon", "freshwater", "use a net", false, "colorful", "url" );
-			Fish f3 = new Fish( 0, 3L, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", "url");
+			Fish f1 = new Fish( 0, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", 1L );
+			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 3L );
+			Fish f3 = new Fish(0, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", 4L);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);
