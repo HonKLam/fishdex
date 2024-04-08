@@ -3,7 +3,6 @@ package dev.hklm.fdbackend.Controllers;
 import dev.hklm.fdbackend.Entities.Fish;
 import dev.hklm.fdbackend.Entities.Fishdex;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -84,12 +82,14 @@ public class FishController {
         List<Fish> fishList = fishdex.getFishList();
 
         // Wenn kein Bild, mach das
-        // ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
-        // fish.setFishImage(FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream()));
+        if (fish.getFishImage() == null) {
+            ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
+            fish.setFishImage(FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream()));
+        } else {
+            fish.setFishImage(fish.getFishImage());
+        }
 
-        fish.setFishImage(fish.getFishImage());
         fish.setImgUrl(String.valueOf(fishList.size() + 1));
-
         fishdex.addFish(fish);
 
         fishdexRepository.save(fishdex);
