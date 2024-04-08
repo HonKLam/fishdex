@@ -81,10 +81,15 @@ public class FishController {
         Fishdex fishdex = fishdexRepository.findById(1);
         List<Fish> fishList = fishdex.getFishList();
 
-        fish.setImgUrl(String.valueOf(fishList.size() + 1));
+        // Wenn kein Bild, mach das
+        if (fish.getFishImage() == null) {
+            ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
+            fish.setFishImage(FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream()));
+        } else {
+            fish.setFishImage(fish.getFishImage());
+        }
 
-        ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
-        fish.setFishImage(FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream()));
+        fish.setImgUrl(String.valueOf(fishList.size() + 1));
         fishdex.addFish(fish);
 
         fishdexRepository.save(fishdex);
