@@ -81,7 +81,7 @@ public class Fish {
         this.fishImage = fishImage;
     }
 
-    public void setImgUrl(String fishId) throws IOException {
+    public void setImgUrl(String fishId) {
         this.imgUrl = "http://localhost:8080/fish/image/" + fishId;
     }
 }
