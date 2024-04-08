@@ -1,0 +1,18 @@
+.fish-form.section {
+    justify-content: center;
+    .container {
+        justify-content: center;
+        display: flex;
+        form {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            .row {
+                justify-content: space-between;
+                display: flex;
+                gap: 25px;
+            }
+        }
+    }
+
+}
