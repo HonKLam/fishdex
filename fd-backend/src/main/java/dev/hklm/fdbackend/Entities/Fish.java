@@ -10,34 +10,48 @@ import java.io.IOException;
 public class Fish {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private Long id; // id of the fish
 
-    private String name;
-    private String location;
-    private String water;
-    private Boolean caught;
-    private Integer counter;
-    private String imgUrl;
+    private Integer counter; // how many fish of this type have been caught
+    private String name; // name of the fish
+    private String water; // fresh, salt or both
+    private String bait; // which type of bait should be used
+    private Boolean edible; // is the fish edible
+    private String extraInfo; // additional information about the fish
+    private String imgUrl; // link to image of the fish
 
+    // this is the IMG data typ thingy
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] fishImage;
 
     public Fish() {};
 
-    public Fish(String name, String location, String water, Boolean caught, Integer counter, String fishId) throws IOException {
-        this.name = name;
-        this.location = location;
-        this.water = water;
-        this.caught = caught;
+    public Fish(
+            Integer counter,
+            String name,
+            String water,
+            String bait,
+            Boolean edible,
+            String extraInfo,
+            Long fishId
+    ) throws IOException {
+
         this.counter = counter;
-        this.imgUrl = "http://localhost:8080/fish/image/" + fishId;
+        this.name = name;
+        this.water = water;
+        this.bait = bait;
+        this.edible = edible;
+        this.extraInfo = extraInfo;
+        this.imgUrl = "http://localhost:8080/fish/image/" + fishId.toString();
 
         /* Die Properties müssen nicht mitgegeben werden, wenn man POST /fish im Frontend macht.
          Bitte nach POST /fish extra nochmal Fisch-Bild hochladen. */
         ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
         this.fishImage = FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream());
     }
+
+    public Integer getCounter() { return counter; }
 
     public Long getId() {
         return id;
@@ -47,21 +61,17 @@ public class Fish {
         return name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
     public String getWater() {
         return water;
     }
 
-    public Boolean getCaught() {
-        return caught;
-    }
+    public String getBait() { return bait; }
 
-    public Integer getCounter() {
-        return counter;
-    }
+    public Boolean getEdible() { return edible; }
+
+    public String getExtraInfo() { return extraInfo; }
+
+    public String getImgURL() { return imgUrl; }
 
     public byte[] getFishImage() {
         return fishImage;
@@ -69,10 +79,6 @@ public class Fish {
 
     public void setFishImage(byte[] fishImage) {
         this.fishImage = fishImage;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
     }
 
     public void setImgUrl(String fishId) {

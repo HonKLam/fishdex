@@ -52,15 +52,17 @@ public class Application {
 			testRepository.saveAll(userList);
 
 			// -------------------------
+			// Integer counter, Long fishId, String name, String water,
+			// String bait, Boolean edible, String extraInfo, String imgUrl
 
-			Fish f1 = new Fish("Fred", "Dresden", "Wawa", false, 0, "1");
-			Fish f2 = new Fish("Guenther", "Chemnitz", "Wawa", false, 0, "2");
-			Fish f3 = new Fish("Meier", "Leipzig", "Dawa", false, 0, "3");
+
+			Fish f1 = new Fish( 0, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", 1L );
+			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 3L );
+			Fish f3 = new Fish(0, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", 4L);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);
 			fishdexRepository.save(fishdex);
 		};
 	}
-
 }
