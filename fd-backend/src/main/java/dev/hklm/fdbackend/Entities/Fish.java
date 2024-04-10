@@ -1,5 +1,7 @@
 package dev.hklm.fdbackend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
@@ -23,6 +25,7 @@ public class Fish {
     // this is the IMG data typ thingy
     @Lob
     @Basic(fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private byte[] fishImage;
 
     public Fish() {};
