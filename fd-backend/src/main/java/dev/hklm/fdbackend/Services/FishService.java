@@ -17,12 +17,16 @@ public class FishService {
     @Autowired
     private FishdexRepository fishdexRepository;
 
-    public List<Fish> getFishdex() {
-        return fishdexRepository.findById(1).getFishList();
+    public Fishdex getFishdex() {
+        return fishdexRepository.findById(1);
+    }
+
+    public List<Fish> getFishdexList() {
+        return this.getFishdex().getFishList();
     }
 
     public Fish getFish(Long fishId) {
-        List<Fish> fishList = fishdexRepository.findById(1).getFishList();
+        List<Fish> fishList = this.getFishdexList();
 
         Fish foundFish = null;
         for (Fish fish : fishList) {
@@ -36,7 +40,7 @@ public class FishService {
     }
 
     public byte[] getFishImageById(Long fishId) {
-        List<Fish> fishList = fishdexRepository.findById(1).getFishList();
+        List<Fish> fishList = this.getFishdexList();
 
         byte[] imageData = null;
         for (Fish fish : fishList) {
@@ -49,8 +53,7 @@ public class FishService {
     }
 
     public void addFish(Fish fish) throws IOException {
-        Fishdex fishdex = fishdexRepository.findById(1);
-        List<Fish> fishList = fishdex.getFishList();
+        Fishdex fishdex = this.getFishdex();
 
         // Wenn kein Bild, mach das
         if (fish.getFishImage() == null) {
@@ -60,7 +63,7 @@ public class FishService {
             fish.setFishImage(fish.getFishImage());
         }
 
-        fish.setImgUrl(String.valueOf(fishList.size() + 1));
+        fish.setImgUrl(String.valueOf(this.getFishdexList().size() + 1));
         fishdex.addFish(fish);
 
         fishdexRepository.save(fishdex);
@@ -97,8 +100,4 @@ public class FishService {
         fishdexRepository.save(fishdex);
         return true;
     }
-
-
-
-
 }

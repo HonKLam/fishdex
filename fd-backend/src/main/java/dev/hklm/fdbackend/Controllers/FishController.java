@@ -24,8 +24,8 @@ public class FishController {
 
     // alle Fischarten zurückgeben - findById(1) ist der erste Fishdex der beim Laden erstellt wurde
     @GetMapping("/fishdex")
-    public List<Fish> getFishdex() {
-        return fishService.getFishdex();
+    public List<Fish> getFishdexList() {
+        return fishService.getFishdexList();
     }
 
     // Information von 1 Fischart bekommen
