@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
-import { fetchData, postData } from '../../api/api.js'
+import { fetchData, postData } from '../utils/api'
 
-function addFishkindForm() {
+export default function FishForm() {
   const [fishName, setFishName] = useState('')
   const [fishInformation, setFishInformation] = useState('')
   const [water, setWater] = useState('')
@@ -169,5 +169,3 @@ function addFishkindForm() {
     </div>
   )
 }
-
-export default addFishkindForm
