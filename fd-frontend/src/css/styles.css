@@ -1,22 +1,22 @@
-@import "header.css";
-@import "varibles.css";
-@import "footer.css";
-@import "fishdex-overview.css";
-@import "add-fish-form.css";
-
-
-
+@import 'header.css';
+@import 'varibles.css';
+@import 'footer.css';
+@import 'fishdex-overview.css';
+@import 'add-fish-form.css';
 
 body {
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  height: 100vh;
 }
+
 .container {
-    max-width: 1024px;
-    padding: 0 5%;
-    margin: auto    ;
+  max-width: 1024px;
+  padding: 0 5%;
+  margin: auto;
 }
+
 .section {
-    padding-top: 30px;
+  padding-top: 30px;
 }

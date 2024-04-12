@@ -1,15 +1,13 @@
 .footer {
-    display: flex;
+  display: flex;
+  height: 56px;
+  justify-content: center;
+
+  ul {
+    list-style: none;
     justify-content: center;
-    .container {
-        position: absolute;
-        bottom: 0;
-    }
-    ul {
-        list-style: none;
-        justify-content: center;
-        gap: 50px;
-        display: flex;
-        flex-direction: row;
-    }
+    gap: 50px;
+    display: flex;
+    flex-direction: row;
+  }
 }

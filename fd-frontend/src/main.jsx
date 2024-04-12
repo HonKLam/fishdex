@@ -9,7 +9,7 @@ import ErrorPage from './Components/General/ErrorPage.jsx'
 import App from './Components/General/App.jsx'
 import Fishdex from './Components/Fishdex.jsx'
 import FishForm from './Components/FishForm.jsx'
-import Homepage from './Components/Homepage.jsx'
+import Homepage from './Components/Homepage/Homepage.jsx'
 
 const queryClient = new QueryClient()
 

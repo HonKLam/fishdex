@@ -1,0 +1,20 @@
+.main_container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-grow: 1;
+  background-color: red;
+  justify-content: center;
+}
+
+.inner_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: blue;
+  height: 1000px;
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
