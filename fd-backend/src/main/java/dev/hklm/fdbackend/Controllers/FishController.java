@@ -1,14 +1,14 @@
 package dev.hklm.fdbackend.Controllers;
 
 import dev.hklm.fdbackend.Entities.Fish;
-import dev.hklm.fdbackend.Entities.Fishdex;
-import dev.hklm.fdbackend.Repositories.FishdexRepository;
+import dev.hklm.fdbackend.Services.FishService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,50 +16,34 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class FishController {
-    private final FishdexRepository fishdexRepository;
 
-    public FishController(FishdexRepository fishdexRepository) {
-        this.fishdexRepository = fishdexRepository;
-    }
+    public FishController() {}
+
+    @Autowired
+    private FishService fishService;
 
     // alle Fischarten zurückgeben - findById(1) ist der erste Fishdex der beim Laden erstellt wurde
     @GetMapping("/fishdex")
-    public List<Fish> getFishdex() {
-        return fishdexRepository.findById(1).getFishList();
+    public List<Fish> getFishdexList() {
+        return fishService.getFishdexList();
     }
 
     // Information von 1 Fischart bekommen
     @GetMapping("/fish/info/{id}")
     public ResponseEntity<Fish> getFish(@PathVariable("id") Long fishId) {
-        List<Fish> fishList = fishdexRepository.findById(1).getFishList();
+        Fish fish = fishService.getFish(fishId);
 
-        Fish foundFish = null;
-        for (Fish fish : fishList) {
-            if (fish.getId().equals(fishId)) {
-                foundFish = fish;
-                break;
-            }
-        }
-
-        if (foundFish == null) {
+        if (fish == null) {
             return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity<>(foundFish, HttpStatus.OK);
+
+        return new ResponseEntity<>(fish, HttpStatus.OK);
     }
 
     // Bild von 1 Fischart bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
     @GetMapping("/fish/image/{id}")
-    public ResponseEntity<byte[]> getImageByFishName(@PathVariable("id") Long fishId) {
-        Fishdex fishdex = fishdexRepository.findById(1);
-        List<Fish> fishList = fishdex.getFishList();
-
-        byte[] imageData = null;
-        for (Fish fish : fishList) {
-            if (fish.getId().equals(fishId)) {
-                imageData = fish.getFishImage();
-                break;
-            }
-        }
+    public ResponseEntity<byte[]> getFishImageById(@PathVariable("id") Long fishId) {
+        byte[] imageData = fishService.getFishImageById(fishId);
 
         if (imageData == null) {
             return ResponseEntity.notFound().build();
@@ -75,44 +59,19 @@ public class FishController {
      -> wird durch @RequestBody zu einem Fish-Objekt gebaut
      -> Repository holen, fish hinzufügen, wieder speichern */
     @PostMapping("/fish")
-    public ResponseEntity<Object> addFish(@RequestBody Fish fish) {
-        Fishdex fishdex = fishdexRepository.findById(1);
-        fishdex.addFish(fish);
-        fishdexRepository.save(fishdex);
+    public ResponseEntity<Object> addFish(@RequestBody Fish fish) throws IOException {
+        fishService.addFish(fish);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     // Custom-Bild für Fish hinzufügen
     @PostMapping("/fish/upload/{id}")
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long fishId) throws IOException {
-        if (image.isEmpty() || fishId.toString().isEmpty()) {
-            return ResponseEntity.badRequest().body("Image or fish name cannot be empty");
+    public ResponseEntity<?> uploadFishImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long fishId) throws IOException {
+        Boolean check = fishService.uploadFishImage(image, fishId);
+        if (!check) {
+            return ResponseEntity.notFound().build();
         }
 
-        String contentType = image.getContentType();
-        if (contentType == null || !contentType.startsWith("image/")) {
-            return ResponseEntity.badRequest().body("Invalid image type. Please upload an image file");
-        }
-
-        Fishdex fishdex = fishdexRepository.findById(1);
-        List<Fish> fishList = fishdex.getFishList();
-
-        boolean found = false;
-        for (Fish fish : fishList) {
-            if (fish.getId().equals(fishId)) {
-                fish.setFishImage(image.getBytes());
-                fish.setImgUrl(fishId.toString());
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            return ResponseEntity.badRequest().body("Fish not found in FishList");
-        }
-
-        fishdex.setFishList(fishList);
-        fishdexRepository.save(fishdex);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 }
