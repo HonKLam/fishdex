@@ -1,9 +1,7 @@
 package dev.hklm.fdbackend.Services;
 import dev.hklm.fdbackend.Entities.Catch;
 import dev.hklm.fdbackend.Entities.Diary;
-import dev.hklm.fdbackend.Entities.Fish;
-import dev.hklm.fdbackend.Entities.Fishdex;
-import dev.hklm.fdbackend.Repositories.FishdexRepository;
+import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -24,9 +22,8 @@ public class CatchService {
     // dann vom Catch-Controller das Zeug hier drin aufrufen
     // Vergleiche dafür: FishController + FishService
 
-
     @Autowired
-    private /*final*/ DiaryRepository diaryRepository;
+    private DiaryRepository diaryRepository;
 
     public Diary getDiary() { return diaryRepository.findById(1); }
 
@@ -66,10 +63,10 @@ public class CatchService {
 
         // Wenn kein Bild, mache das
         if (fishCatch.getCatchImage() == null) {
-            ClassPathResource catchPathRessource = new ClassPathResource("img/fish.png");
-            fishCatch.setCatchImage();
+            ClassPathResource fishPathRessource = new ClassPathResource("img/catch.png");
+            fishCatch.setCatchImage(FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream()));
         } else {
-            fishCatch.setCatchImage(fishCatch.getCatchImage(FileCopyUtils.copyToByteArray(catchPathRessource.getInputStream()));
+            fishCatch.setCatchImage(fishCatch.getCatchImage());
         }
 
         fishCatch.setImgUrl(String.valueOf(this.getCatchList().size() + 1));
@@ -109,23 +106,5 @@ public class CatchService {
         diary.setCatchList(catchList);
         diaryRepository.save(diary);
         return true;
-
-        // Keine Ahnung, ob das noch benötigt wird, oder wo das hin soll
-        /*
-        if (image.isEmpty()) {
-            return ResponseEntity.badRequest().body("Image cannot be empty");
-        }
-
-        String contentType = image.getContentType();
-        if (contentType == null || !contentType.startsWith("image/")) {
-            return ResponseEntity.badRequest().body("Invalid image type. Please upload an image file");
-        }
-
-        if (!found) {
-            return ResponseEntity.badRequest().body("Fish not found in FishList");
-        }
-
-*/
-
     }
 }

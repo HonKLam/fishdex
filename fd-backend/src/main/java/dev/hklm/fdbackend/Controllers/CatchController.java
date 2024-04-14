@@ -1,9 +1,8 @@
 package dev.hklm.fdbackend.Controllers;
 
 import dev.hklm.fdbackend.Entities.Catch;
-import dev.hklm.fdbackend.Entities.Diary;
 import dev.hklm.fdbackend.Services.CatchService;
-import dev.hklm.fdbackend.Repositories.DiaryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +22,7 @@ public class CatchController {
     @Autowired
     private CatchService catchService;
 
-    // alle Fänge zurückgeben - findById(1) ist das erste Diary der beim Laden erstellt wurde
+    // alle Fänge zurückgeben - findById(1), ist das erste Diary der beim Laden erstellt wurde
     @GetMapping("/diary")
     public List<Catch> getDiary() { return catchService.getCatchList(); }
 
@@ -36,12 +35,12 @@ public class CatchController {
             return ResponseEntity.notFound().build();
         }
 
-        return new ResponseEntity<>(foundCatch, HttpStatus.OK);
+        return new ResponseEntity<>(fishCatch, HttpStatus.OK);
     }
 
     // Bild von 1 Catch bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
     @GetMapping("/catch/image/{id}")
-    public ResponseEntity<byte[]> getImageByCatchName(@PathVariable("id") Long catchId) {
+    public ResponseEntity<byte[]> getImageByCatchId(@PathVariable("id") Long catchId) {
         byte[] imageData = catchService.getCatchImageById(catchId);
 
         if (imageData == null) {
@@ -58,7 +57,7 @@ public class CatchController {
      -> wird durch @RequestBody zu einem Catch-Objekt gebaut
      -> Repository holen, Catch hinzufügen, wieder speichern */
     @PostMapping("/catch")
-    public ResponseEntity<Object> addFish(@RequestBody Catch fishCatch) {
+    public ResponseEntity<Object> addFish(@RequestBody Catch fishCatch) throws IOException {
         catchService.addCatch(fishCatch);
         return ResponseEntity.ok(HttpStatus.OK);
     }
