@@ -1,9 +1,11 @@
 package dev.hklm.fdbackend;
 
-import dev.hklm.fdbackend.Entities.*;
+import dev.hklm.fdbackend.Entities.Catch;
+import dev.hklm.fdbackend.Entities.Diary;
+import dev.hklm.fdbackend.Entities.Fish;
+import dev.hklm.fdbackend.Entities.Fishdex;
 import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
-import dev.hklm.fdbackend.Repositories.TestRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -37,27 +39,11 @@ public class Application {
 
 	// Hier Tabellen / Repos der DB mit Daten füllen
 	@Bean
-	public CommandLineRunner initRepos(TestRepository testRepository, FishdexRepository fishdexRepository, DiaryRepository diaryRepository) {
+	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository) {
 		return (args) -> {
-			TestEntity e1 = new TestEntity("Lam", 20, "Dresden");
-			TestEntity e2 = new TestEntity("Peter", 500, "Dresden");
-			TestEntity e3 = new TestEntity("Finn", 1000, "Dresden");
-			TestEntity e4 = new TestEntity("Finja", 3, "Dresden");
-			TestEntity e5 = new TestEntity("Nico", 37, "Dresden");
-
-			List<TestEntity> userList = Arrays.asList(e1, e2, e3, e4, e5);
-
-			// in Repository speichern
-			testRepository.saveAll(userList);
-
-			// -------------------------
-			// Integer counter, Long fishId, String name, String water,
-			// String bait, Boolean edible, String extraInfo, String imgUrl
-
-
 			Fish f1 = new Fish( 0, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", 1L );
-			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 3L );
-			Fish f3 = new Fish(0, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", 4L);
+			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 2L );
+			Fish f3 = new Fish(0, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", 3L);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);
