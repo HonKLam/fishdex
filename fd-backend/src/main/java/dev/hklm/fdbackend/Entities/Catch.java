@@ -1,10 +1,14 @@
 package dev.hklm.fdbackend.Entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SourceType;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
 
 @Entity
 public class Catch {
@@ -12,11 +16,17 @@ public class Catch {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    // Instant referenziert einen Zeitpunkt in der UTC Timeline und kann deswegen gut für Timelines benutzt werden
+    // source gibt an, wie das Datum zu ermitteln ist --> SourceType.DB bedeutet, die DB gibt es an
+    // Referenz: https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
+    @CreationTimestamp(source = SourceType.DB)
+    private Instant createdOn;
+
     private String location;
     private String imageURL;
     private Double length;
     private String description;
-    private String fish;
+    private Long fishId;
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -24,11 +34,11 @@ public class Catch {
 
     public Catch() {}
 
-    public Catch(String location, Double length, String description, Fish fish, Long catchId) throws IOException {
+    public Catch(String location, Double length, String description, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
         this.description = description;
-        this.fish = fish.getName();
+        this.fishId = fishId;
         this.imageURL = "http://localhost:8080/catch/image/" + catchId;
 
         /* Die Properties müssen nicht mitgegeben werden, wenn man POST /catch im Frontend macht.
@@ -40,6 +50,8 @@ public class Catch {
     public Long getId() {
         return id;
     }
+
+    public Instant getCreatedOn() {return createdOn;}
 
     public String getLocation() {
         return location;
@@ -61,7 +73,7 @@ public class Catch {
         return catchImage;
     }
 
-    public String getFish(){return fish;}
+    public Long getFishId(){return fishId;}
 
     public void setCatchImage(byte[] catchImage) {
         this.catchImage = catchImage;

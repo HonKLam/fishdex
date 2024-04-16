@@ -100,4 +100,12 @@ public class FishService {
         fishdexRepository.save(fishdex);
         return true;
     }
+
+    public void increaseFishCounter(Long fishId) {
+        Fish fish = this.getFish(fishId);
+        Fishdex fishdex = this.getFishdex();
+
+        Integer increasedCounter = fish.getCounter() + 1;
+        fishdexRepository.save(fishdex);
+    }
 }

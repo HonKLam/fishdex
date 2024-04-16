@@ -1,6 +1,7 @@
 package dev.hklm.fdbackend.Services;
 import dev.hklm.fdbackend.Entities.Catch;
 import dev.hklm.fdbackend.Entities.Diary;
+import dev.hklm.fdbackend.Entities.Fish;
 import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -14,13 +15,6 @@ import java.util.List;
 
 @Service
 public class CatchService {
-
-    // TODO:
-    // Was muss hier rein?
-    // CatchController-Zeugs
-    // Zeugs aus dem CatchController hier rein verschieben
-    // dann vom Catch-Controller das Zeug hier drin aufrufen
-    // Vergleiche dafür: FishController + FishService
 
     @Autowired
     private DiaryRepository diaryRepository;
@@ -60,6 +54,7 @@ public class CatchService {
 
     public void addCatch(Catch fishCatch) throws IOException {
         Diary diary = this.getDiary();
+        FishService fishService = new FishService();
 
         // Wenn kein Bild, mache das
         if (fishCatch.getCatchImage() == null) {
@@ -71,6 +66,9 @@ public class CatchService {
 
         fishCatch.setImgUrl(String.valueOf(this.getCatchList().size() + 1));
         diary.addCatch(fishCatch);
+
+        // Counter der Fischart erhöhen, die gefangen wurde
+        fishService.increaseFishCounter(fishCatch.getFishId());
 
         diaryRepository.save(diary);
     }
