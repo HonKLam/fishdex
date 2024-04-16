@@ -1,0 +1,29 @@
+.main_container {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  height: 75%;
+  width: 65%;
+  margin-left: auto;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 2%;
+  height: 100%;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 0px;
+}
+
+hr {
+  width: 100%;
+}
