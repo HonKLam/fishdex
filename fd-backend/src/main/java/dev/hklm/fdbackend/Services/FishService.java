@@ -106,6 +106,8 @@ public class FishService {
         Fishdex fishdex = this.getFishdex();
 
         Integer increasedCounter = fish.getCounter() + 1;
+        fish.setCounter(increasedCounter);
+
         fishdexRepository.save(fishdex);
     }
 }

@@ -19,6 +19,9 @@ public class CatchService {
     @Autowired
     private DiaryRepository diaryRepository;
 
+    @Autowired
+    private FishService fishService;
+
     public Diary getDiary() { return diaryRepository.findById(1); }
 
     // alle Fänge zurückgeben
@@ -54,8 +57,6 @@ public class CatchService {
 
     public void addCatch(Catch fishCatch) throws IOException {
         Diary diary = this.getDiary();
-        FishService fishService = new FishService();
-
         // Wenn kein Bild, mache das
         if (fishCatch.getCatchImage() == null) {
             ClassPathResource fishPathRessource = new ClassPathResource("img/catch.png");
@@ -65,11 +66,11 @@ public class CatchService {
         }
 
         fishCatch.setImgUrl(String.valueOf(this.getCatchList().size() + 1));
-        diary.addCatch(fishCatch);
 
         // Counter der Fischart erhöhen, die gefangen wurde
         fishService.increaseFishCounter(fishCatch.getFishId());
 
+        diary.addCatch(fishCatch);
         diaryRepository.save(diary);
     }
 
