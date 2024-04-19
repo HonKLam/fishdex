@@ -37,14 +37,14 @@ public class User {
 
     public User() {}
 
-    public User(String userLocation, String username, String description, Long uid) throws IOException {
+    public User(String userLocation, String username, String description, Integer totalCatches, Long uid) throws IOException {
         this.userLocation = userLocation;
         this.username = username;
         this.description = description;
+        this.totalCatches = totalCatches;
         this.imageURL = "http://localhost:8080/catch/image/" + uid;
 
-        ClassPathResource catchPathRessource = new ClassPathResource("img/catch.png");
-        // fishPathRessource wurde zu userPathRessource >>> muss noch angelegt werden?
+        ClassPathResource userPathRessource = new ClassPathResource("img/catch.png");
         this.userImage = FileCopyUtils.copyToByteArray(userPathRessource.getInputStream());
 
     }
@@ -69,7 +69,7 @@ public class User {
         return description;
     }
 
-    public byte[] getIImage() {
+    public byte[] getUserImage() {
         return userImage;
     }
 
