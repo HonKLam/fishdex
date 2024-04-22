@@ -8,10 +8,10 @@ import java.util.List;
 @Entity
 public class Userboard {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<User> userList = new ArrayList<>();
 
     protected Userboard() {}
