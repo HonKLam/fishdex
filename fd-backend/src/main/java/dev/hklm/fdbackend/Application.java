@@ -1,7 +1,10 @@
 package dev.hklm.fdbackend;
 
+import dev.hklm.fdbackend.Entities.Catch;
+import dev.hklm.fdbackend.Entities.Diary;
 import dev.hklm.fdbackend.Entities.Fish;
 import dev.hklm.fdbackend.Entities.Fishdex;
+import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,7 +39,7 @@ public class Application {
 
 	// Hier Tabellen / Repos der DB mit Daten füllen
 	@Bean
-	public CommandLineRunner initRepos(FishdexRepository fishdexRepository) {
+	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository) {
 		return (args) -> {
 			Fish f1 = new Fish( 0, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", 1L );
 			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 2L );
@@ -45,6 +48,15 @@ public class Application {
 
 			Fishdex fishdex = new Fishdex(fishList);
 			fishdexRepository.save(fishdex);
+
+
+			Catch c1 = new Catch("Dresden", 12.3, "Sehr cooler Tag", f2.getId(), 1L);
+			Catch c2 = new Catch("BaWü", 15.0, "Ich wurde von Finn gefangen.", f1.getId(), 2L);
+			Catch c3 = new Catch("Ostsee", 20.3, "noice.", f2.getId(), 3L);
+			List<Catch> catchList = Arrays.asList(c1, c2, c3);
+
+			Diary diary = new Diary(catchList);
+			diaryRepository.save(diary);
 		};
 	}
 }

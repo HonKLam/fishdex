@@ -87,4 +87,6 @@ public class Fish {
     public void setImgUrl(String fishId) {
         this.imgUrl = "http://localhost:8080/fish/image/" + fishId;
     }
+
+    public void setCounter(Integer counter) {this.counter = counter;}
 }
