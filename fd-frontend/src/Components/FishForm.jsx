@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
+import Button from "./General/Button.jsx";
 
 export default function FishForm() {
   const [fishName, setFishName] = useState('')
@@ -37,6 +38,12 @@ export default function FishForm() {
     if (!freshwaterChecked && !saltwaterChecked) {
       alert(
         'Bitte geben Sie an, in welchem Wasser der Fisch zu finden ist.'
+      )
+      return
+    }
+    if (!fishName) {
+      alert(
+        'Bitte geben Sie einen Fischnamen an.'
       )
       return
     }
@@ -104,22 +111,28 @@ export default function FishForm() {
     <div className="section fish-form">
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <div className="row">
-            <input type="file" onChange={handleFileChange} />
+          <div className="row file">
+            <img src="https://placehold.co/600x400" className="image"/>
+            <div className='file file--upload'>
+              <label htmlFor='input-file'>
+                <i className="material-icons">Bild Hochladen</i>
+              </label>
+              <input id='input-file' type='file' onChange={handleFileChange}/>
+            </div>
+          </div>
+          <div className="row row-col" >
+            <label className="required">Fischart:</label>
+            <input className="fish-name" name="fish-kind" onChange={handleName}/>
+          </div>
+          <div className="row row-col">
+            <label>Informationen über die Fischart:</label>
+            <textarea className="fish-info" name="fish-info" onChange={handleInfos} />
           </div>
           <div className="row">
-            <label>Fischart</label>
-            <input name="fish-kind" onChange={handleName} />
+            <label className="required">In welchen Gewässern ist der Fisch zu finden?</label>
           </div>
           <div className="row">
-            <label>Informationen über den Fisch</label>
-            <input name="fish-info" onChange={handleInfos} />
-          </div>
-          <div className="row">
-            <label>gewässer</label>
-          </div>
-          <div className="row">
-            <label>
+            <label >
               Süßwasser
               <input
                 type="checkbox"
@@ -137,7 +150,7 @@ export default function FishForm() {
             </label>
           </div>
           <div className="row">
-            <label>Essbar</label>
+            <label className="required">Ist der Fisch essbar?</label>
           </div>
           <div className="row">
             <label>
@@ -159,11 +172,13 @@ export default function FishForm() {
               />
             </label>
           </div>
-          <div className="row">
-            <label>Geeignete Köder</label>
-            <input name="bait" onChange={handleBait} />
+          <div className="row row-col">
+            <label>Geeignete Köder für den Fisch</label>
+            <input className="bait" name="bait" onChange={handleBait} />
           </div>
-          <button type="submit">Fischart anlegen</button>
+          <div className="submit-btn">
+            <Button text="Fischart anlegen" callBack={handleSubmit}/>
+          </div>
         </form>
       </div>
     </div>
