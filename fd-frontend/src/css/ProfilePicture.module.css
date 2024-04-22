@@ -2,9 +2,21 @@
   height: 200px;
   width: 200px;
   border-radius: 500px;
+  border: solid black 1px;
   background-color: yellow;
   margin-left: 5%;
   overflow: hidden;
+}
+
+.small_container {
+  margin-left: 5%;
+  height: 50px;
+  width: 50px;
+  border-radius: 500px;
+  border: solid black 1px;
+  background-color: cyan;
+  overflow: hidden;
+  margin-bottom: auto;
 }
 
 img {

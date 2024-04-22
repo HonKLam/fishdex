@@ -1,10 +1,23 @@
 import styles from '../../css/ProfilePicture.module.css'
-import Fish from '../../../public/assets/Salmon.png'
+import Fish from '/assets/Salmon.png'
+import PropTypes from 'prop-types'
 
-export default function ProfilePicture() {
-  return (
-    <div className={styles.main_container}>
-      <img src={Fish} />
-    </div>
-  )
+ProfilePicture.propTypes = {
+    state: PropTypes.string,
+}
+
+export default function ProfilePicture(props) {
+    const { state } = props
+
+    return (
+        <div
+            className={
+                state === 'small'
+                    ? styles.small_container
+                    : styles.main_container
+            }
+        >
+            <img src={Fish} />
+        </div>
+    )
 }

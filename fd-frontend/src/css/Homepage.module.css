@@ -3,7 +3,6 @@
   overflow-x: hidden;
 
   display: flex;
-  flex-grow: 1;
   background-color: red;
   justify-content: center;
 }
@@ -13,7 +12,7 @@
   align-items: center;
   flex-direction: column;
   background-color: blue;
-  height: 1000px;
+  height: fit-content;
   width: 80%;
   margin-top: 5%;
   margin-bottom: 5%;
