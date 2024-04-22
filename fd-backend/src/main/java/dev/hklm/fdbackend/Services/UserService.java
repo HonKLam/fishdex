@@ -31,7 +31,7 @@ public class UserService {
 
         User foundUser = null;
         for (User user : userList) {
-            if (user.getUid().equals(uid)) {
+            if (user.getId().equals(uid)) {
                 foundUser = user;
                 break;
             }
@@ -45,7 +45,7 @@ public class UserService {
 
         byte[] imageData = null;
         for (User user : userList) {
-            if (user.getUid().equals(uid)) {
+            if (user.getId().equals(uid)) {
                 imageData = user.getUserImage();
                 break;
             }
@@ -88,7 +88,7 @@ public class UserService {
 
         boolean found = false;
         for (User user : userList) {
-            if (user.getUid().equals(uid)) {
+            if (user.getId().equals(uid)) {
                 user.setUserImage(image.getBytes());
                 user.setImgUrl(uid.toString());
                 found = true;

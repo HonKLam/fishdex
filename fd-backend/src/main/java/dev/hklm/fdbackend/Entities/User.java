@@ -15,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long uid;
+    private Long id;
 
     private String username;
     private String imageURL;
@@ -43,8 +43,8 @@ public class User {
 
     }
 
-    public Long getUid() {
-        return uid;
+    public Long getId() {
+        return id;
     }
 
     public String getUsername() { return username; }
@@ -73,8 +73,8 @@ public class User {
         return imageURL;
     }
 
-    public void setImgUrl(String catchId) {
-        this.imageURL = "http://localhost:8080/user/image/" + uid;
+    public void setImgUrl(String userId) {
+        this.imageURL = "http://localhost:8080/user/image/" + userId;
     }
 
 }

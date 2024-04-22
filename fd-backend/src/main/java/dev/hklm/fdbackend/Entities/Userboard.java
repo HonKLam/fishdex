@@ -20,13 +20,6 @@ public class Userboard {
         this.userList = userList;
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "Userboard[id=%d, userList='%s']",
-                id, userList.toString());
-    }
-
     public List<User> getUserList() {
         return userList;
     }
