@@ -25,6 +25,7 @@ public class Catch {
     private String location;
     private String imageURL;
     private Double length;
+    private Double weight;
     private String description;
     private Long fishId;
 
@@ -35,9 +36,10 @@ public class Catch {
 
     public Catch() {}
 
-    public Catch(String location, Double length, String description, Long fishId, Long catchId) throws IOException {
+    public Catch(String location, Double length, Double weight, String description, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
+        this.weight = weight;
         this.description = description;
         this.fishId = fishId;
         this.imageURL = "http://localhost:8080/catch/image/" + catchId;
@@ -57,10 +59,6 @@ public class Catch {
 
     public String getLocation() {
         return location;
-    }
-
-    public String getImageURL() {
-        return imageURL;
     }
 
     public Double getLength() {
@@ -86,6 +84,10 @@ public class Catch {
     }
 
     public void setImgUrl(String catchId) {
-        this.imageURL = "http://localhost:8080/fish/image/" + catchId;
+        this.imageURL = "http://localhost:8080/catch/image/" + catchId;
+    }
+
+    public Double getWeight() {
+        return weight;
     }
 }

@@ -50,9 +50,9 @@ public class Application {
 			fishdexRepository.save(fishdex);
 
 
-			Catch c1 = new Catch("Dresden", 12.3, "Sehr cooler Tag", f2.getId(), 1L);
-			Catch c2 = new Catch("BaWü", 15.0, "Ich wurde von Finn gefangen.", f1.getId(), 2L);
-			Catch c3 = new Catch("Ostsee", 20.3, "noice.", f2.getId(), 3L);
+			Catch c1 = new Catch("Dresden", 12.3, 53.0, "Sehr cooler Tag", f2.getId(), 1L);
+			Catch c2 = new Catch("BaWü", 15.0, 23.5, "Ich wurde von Finn gefangen.", f1.getId(), 2L);
+			Catch c3 = new Catch("Ostsee", 20.3, 12.2, "noice.", f3.getId(), 3L);
 			List<Catch> catchList = Arrays.asList(c1, c2, c3);
 
 			Diary diary = new Diary(catchList);
