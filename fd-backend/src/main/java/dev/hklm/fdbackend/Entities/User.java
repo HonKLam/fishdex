@@ -35,7 +35,7 @@ public class User {
         this.totalCatches = totalCatches;
         this.imageURL = "http://localhost:8080/user/image/" + uid;
 
-        ClassPathResource userPathRessource = new ClassPathResource("img/catch.png");
+        ClassPathResource userPathRessource = new ClassPathResource("img/user.png");
         this.userImage = FileCopyUtils.copyToByteArray(userPathRessource.getInputStream());
 
     }
