@@ -14,14 +14,8 @@ import java.time.Instant;
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long uid;
-
-    // Instant referenziert einen Zeitpunkt in der UTC Timeline und kann deswegen gut für Timelines benutzt werden
-    // source gibt an, wie das Datum zu ermitteln ist --> SourceType.DB bedeutet, die DB gibt es an
-    // Referenz: https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
-    @CreationTimestamp(source = SourceType.DB)
-    private Instant createdOn;
 
     private String username;
     private String imageURL;
@@ -42,7 +36,7 @@ public class User {
         this.username = username;
         this.description = description;
         this.totalCatches = totalCatches;
-        this.imageURL = "http://localhost:8080/catch/image/" + uid;
+        this.imageURL = "http://localhost:8080/user/image/" + uid;
 
         ClassPathResource userPathRessource = new ClassPathResource("img/catch.png");
         this.userImage = FileCopyUtils.copyToByteArray(userPathRessource.getInputStream());
@@ -52,8 +46,6 @@ public class User {
     public Long getUid() {
         return uid;
     }
-
-    public Instant getCreatedOn() { return createdOn; }
 
     public String getUsername() { return username; }
 

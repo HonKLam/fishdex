@@ -20,9 +20,6 @@ public class UserService {
     @Autowired
     private UserboardRepository userboardRepository;
 
-    @Autowired
-    private UserService userService;
-
     public Userboard getUserboard() { return userboardRepository.findById(1); }
 
     // alle User ausgeben
