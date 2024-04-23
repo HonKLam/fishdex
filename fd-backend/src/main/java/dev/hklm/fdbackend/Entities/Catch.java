@@ -9,6 +9,7 @@ import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.time.ZonedDateTime;
 
 @Entity
 public class Catch {
@@ -16,12 +17,13 @@ public class Catch {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    // Instant referenziert einen Zeitpunkt in der UTC Timeline und kann deswegen gut für Timelines benutzt werden
+    // ZonedDateTime gibt Moment an in einer bestimmten Zeitzone
     // source gibt an, wie das Datum zu ermitteln ist --> SourceType.DB bedeutet, die DB gibt es an
-    // Referenz: https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
+    //Erklärung zu ZonedDateTime: https://stackoverflow.com/questions/32437550/whats-the-difference-between-instant-and-localdatetime
     @CreationTimestamp(source = SourceType.DB)
-    private Instant createdOn;
+    private ZonedDateTime createdOn;
 
+    private ZonedDateTime catchDate;
     private String location;
     private String imageURL;
     private Double length;
@@ -36,11 +38,15 @@ public class Catch {
 
     public Catch() {}
 
-    public Catch(String location, Double length, Double weight, String description, Long fishId, Long catchId) throws IOException {
+    // ZonedDateTime kann folgendermaßen angelegt werden:
+    // ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]")
+    // ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")
+    public Catch(String location, Double length, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
         this.weight = weight;
         this.description = description;
+        this.catchDate = catchDate;
         this.fishId = fishId;
         this.imageURL = "http://localhost:8080/catch/image/" + catchId;
 
@@ -55,7 +61,11 @@ public class Catch {
         return id;
     }
 
-    public Instant getCreatedOn() {return createdOn;}
+    public ZonedDateTime getCatchDate() {return catchDate;}
+
+    public void setCatchDate(ZonedDateTime catchDate) {this.catchDate = catchDate;}
+
+    public ZonedDateTime getCreatedOn(){return createdOn;}
 
     public String getLocation() {
         return location;
