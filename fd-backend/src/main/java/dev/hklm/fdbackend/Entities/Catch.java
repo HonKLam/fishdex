@@ -17,7 +17,11 @@ public class Catch {
     private Long id;
 
     // Instant referenziert einen Zeitpunkt in der UTC Timeline und kann deswegen gut für Timelines benutzt werden
+    // source gibt an, wie das Datum zu ermitteln ist --> SourceType.DB bedeutet, die DB gibt es an
     // Referenz: https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html
+    @CreationTimestamp(source = SourceType.DB)
+    private Instant createdOn;
+
     private Instant catchDate;
     private String location;
     private String imageURL;
@@ -53,6 +57,8 @@ public class Catch {
     public Instant getCatchDate() {return catchDate;}
 
     public void setCatchDate(Instant catchDate) {this.catchDate = catchDate;}
+
+    public Instant getCreatedOn(){return createdOn;}
 
     public String getLocation() {
         return location;
