@@ -1,8 +1,19 @@
 .fishdex-overview {
     .container {
+        .row {
+            .text-wrap {
+                .description {
+                    margin-left: 10%;
+                    padding: 40px 0;
+                }
+            }
+        }
         .card-wrap {
             column-count: 4;
+            flex-wrap: wrap;
             display: flex;
+            justify-content: start;
+            gap: 70px;
             .fishdex-entry:hover {
                 img {
                     scale: 1.1;
@@ -12,14 +23,20 @@
                 display: flex;
                 transition-duration: var(--animation-duration);
                 flex-direction: column;
-
+                .text-wrap {
+                    justify-content: center;
+                    display: flex;
+                    text-align: center;
+                }
                 .img-wrap {
                     max-width: 100%;
-                    object-fit: contain;
                     overflow: hidden;
+                    border-radius: 5px;
                     img {
-                        max-width: 250px;
-                        height: auto;
+                        max-width: 200px;
+                        height: 200px;
+                        border-radius: 15px;
+                        object-fit: cover;
                     }
                 }
             }

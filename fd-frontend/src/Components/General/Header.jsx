@@ -9,13 +9,13 @@ export default function Header() {
                     <div className="menu">
                         <ul>
                             <li>
-                                <a>Fishdex</a>
+                                <a href="/fishdex">Fishdex</a>
                             </li>
                             <li>
-                                <a>Blogeinträge</a>
+                                <a href="/timeline">Blogeinträge</a>
                             </li>
                             <li>
-                                <a>und nochirgendwas</a>
+                                <a href="/fish/form">und nochirgendwas</a>
                             </li>
                         </ul>
                     </div>

@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
 import Button from "./General/Button.jsx";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from 'react-dom/client'
+
 
 export default function FishForm() {
   const [fishName, setFishName] = useState('')
@@ -30,7 +33,6 @@ export default function FishForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log()
     if (!notEdibleChecked && !edibleChecked) {
       alert('Bitte geben Sie an, ob der Fisch essbar ist.')
       return
@@ -57,7 +59,7 @@ export default function FishForm() {
       fishImage: file,
     }
     mutate(data)
-    setIsSubmitted(true)
+
   }
 
   const handleName = (event) => {

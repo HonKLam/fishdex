@@ -41,7 +41,7 @@ export default function Fishdex() {
             return (
               <a className="fishdex-entry" key={index}>
                 <div className="img-wrap">
-                  {item.imgUrl && <img src={item.imgUrl} />}
+                  {item.imgURL && <img src={item.imgURL} />}
                 </div>
                 <div className="text-wrap">
                   {item.name && item.name}

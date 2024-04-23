@@ -3,6 +3,7 @@
 @import 'footer.css';
 @import 'fishdex-overview.css';
 @import 'add-fish-form.css';
+@import "404.css";
 
 body {
   margin: 0;
