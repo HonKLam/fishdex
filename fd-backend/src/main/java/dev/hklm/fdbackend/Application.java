@@ -65,9 +65,9 @@ public class Application {
 
 
 
-			User u1 = new User("Sweden", "Blahaj", "SHAAA", 3, 1L);
-			User u2 = new User("Super Earth", "John Helldiver", "For Democracy!", 1337, 2L);
-			User u3 = new User("Minecraft", "Steve", "Master Baiter", 0, 3L);
+			User u1 = new User("Sweden", "Blahaj", "SHAAA", 3, 1L, 1, 1);
+			User u2 = new User("Super Earth", "John Helldiver", "For Democracy!", 1337, 2L, 2, 2);
+			User u3 = new User("Minecraft", "Steve", "Master Baiter", 0, 3L, 3, 3);
 			List<User> userList = Arrays.asList(u1, u2, u3);
 
 			Userboard userboard = new Userboard(userList);

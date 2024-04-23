@@ -19,7 +19,9 @@ public class User {
     private String description;
     private String location;
     private Integer totalCatches;
-    // evtl. "aktiv seit x" Varible?
+    private Integer fishdexId;
+    private Integer diaryId;
+
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -28,12 +30,15 @@ public class User {
 
     public User() {}
 
-    public User(String location, String username, String description, Integer totalCatches, Long uid) throws IOException {
+    public User(String location, String username, String description, Integer totalCatches, Long uid, Integer fishdexId, Integer diaryId) throws IOException {
         this.location = location;
         this.username = username;
         this.description = description;
         this.totalCatches = totalCatches;
         this.imageURL = "http://localhost:8080/user/image/" + uid;
+
+        this.fishdexId = fishdexId;
+        this.diaryId = diaryId;
 
         ClassPathResource userPathRessource = new ClassPathResource("img/user.png");
         this.userImage = FileCopyUtils.copyToByteArray(userPathRessource.getInputStream());
@@ -54,6 +59,9 @@ public class User {
         return description;
     }
 
+    public Integer getFishdexId() { return fishdexId; }
+
+    public Integer getDiaryId() { return diaryId; }
     public byte[] getUserImage() {
         return userImage;
     }
