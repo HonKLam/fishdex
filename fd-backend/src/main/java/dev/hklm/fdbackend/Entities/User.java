@@ -17,7 +17,7 @@ public class User {
     private String username;
     private String imageURL;
     private String description;
-    private String userLocation;
+    private String location;
     private Integer totalCatches;
     // evtl. "aktiv seit x" Varible?
 
@@ -28,8 +28,8 @@ public class User {
 
     public User() {}
 
-    public User(String userLocation, String username, String description, Integer totalCatches, Long uid) throws IOException {
-        this.userLocation = userLocation;
+    public User(String location, String username, String description, Integer totalCatches, Long uid) throws IOException {
+        this.location = location;
         this.username = username;
         this.description = description;
         this.totalCatches = totalCatches;
@@ -46,11 +46,7 @@ public class User {
 
     public String getUsername() { return username; }
 
-    public String getLocation() { return userLocation; }
-
-    public String getImageURL() {
-        return imageURL;
-    }
+    public String getLocation() { return location; }
 
     public Integer getTotalCatches() { return totalCatches; }
 
