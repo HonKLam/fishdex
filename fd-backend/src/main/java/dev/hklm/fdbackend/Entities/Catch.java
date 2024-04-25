@@ -41,7 +41,7 @@ public class Catch {
     // ZonedDateTime kann folgendermaßen angelegt werden:
     // ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]")
     // ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")
-    public Catch(String location, Double length, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
+    public Catch(String location, Double length, Double weight, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
         this.weight = weight;
