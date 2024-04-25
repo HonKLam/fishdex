@@ -7,9 +7,14 @@
   width: 85%;
   height: auto;
   background-color: green;
+  padding-bottom: 1%;
 }
 
 h3 {
   margin-right: auto;
-  margin-bottom: 0;
+  margin-bottom: 1%;
+}
+
+#timeline_button {
+  margin-top: 2%;
 }

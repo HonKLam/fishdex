@@ -7,27 +7,35 @@ import PropTypes from 'prop-types'
 
 RecentPost.propTypes = {
     entry: PropTypes.object,
+    user: PropTypes.object,
 }
 
 export default function RecentPost(props) {
-    const { entry } = props
+    const { entry, user } = props
 
     const { data, isLoading, isError } = useQuery(`fish-data-${entry.id}`, () =>
         fetchData(`/fish/info/${entry.fishId}`)
     )
 
-    if (isLoading) return <div>Laden...</div>
-    if (isError) return <div>Ein Fehler ist aufgetreten!</div>
+    if (isLoading) return <div></div>
+    if (isError) return <div></div>
+
+    const creationDate = new Date(entry.createdOn)
+        .toLocaleString('de-DE')
+        .split(',')[0]
+    const catchDate = new Date(entry.catchDate)
+        .toLocaleString('de-DE')
+        .split(',')[0]
 
     return (
         <div className={styles.main_container}>
             <div className={styles.rp_top}>
                 <div className={styles.top_left}>
                     <div className={styles.row}>
-                        <ProfilePicture state="small" />
+                        <ProfilePicture state="small" image={user.imgUrl} />
                         <div className={styles.text}>
-                            <h2>Lami Salami</h2>
-                            <p>Gepostet am {entry.createdOn}</p>
+                            <h2>{user.username}</h2>
+                            <p>Gepostet am {creationDate}</p>
                             <p>{entry.description}</p>
                             <hr />
                         </div>
@@ -47,6 +55,7 @@ export default function RecentPost(props) {
                     <p>Länge: {entry.length}cm</p>
                     <br />
                     <p>Ort: {entry.location}</p>
+                    <p>Datum: {catchDate}</p>
                 </div>
             </div>
         </div>
