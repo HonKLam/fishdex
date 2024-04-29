@@ -1,0 +1,33 @@
+.fish_info_container {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  background-image: url('/assets/background.png');
+  background-size: cover;
+}
+
+.fish_info_inner_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  height: fit-content;
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 2% 0;
+}
+
+.info_block {
+  display: flex;
+  flex-direction: row;
+}
+
+.info_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: auto;
+}
