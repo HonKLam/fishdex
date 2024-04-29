@@ -1,0 +1,45 @@
+.main_container {
+  display: flex;
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  justify-content: center;
+}
+
+.inner_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  height: fit-content;
+  width: 70%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 2% 2%;
+  border-radius: 10px;
+}
+
+#bar_h1 {
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#bar_span {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#new_entry_btn {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

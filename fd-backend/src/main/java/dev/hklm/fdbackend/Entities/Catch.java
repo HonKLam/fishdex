@@ -27,6 +27,7 @@ public class Catch {
     private String location;
     private String imageURL;
     private Double length;
+    private Double weight;
     private String description;
     private Long fishId;
 
@@ -40,9 +41,10 @@ public class Catch {
     // ZonedDateTime kann folgendermaßen angelegt werden:
     // ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]")
     // ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")
-    public Catch(String location, Double length, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
+    public Catch(String location, Double length, Double weight, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
+        this.weight = weight;
         this.description = description;
         this.catchDate = catchDate;
         this.fishId = fishId;
@@ -69,10 +71,6 @@ public class Catch {
         return location;
     }
 
-    public String getImageURL() {
-        return imageURL;
-    }
-
     public Double getLength() {
         return length;
     }
@@ -96,6 +94,10 @@ public class Catch {
     }
 
     public void setImgUrl(String catchId) {
-        this.imageURL = "http://localhost:8080/fish/image/" + catchId;
+        this.imageURL = "http://localhost:8080/catch/image/" + catchId;
+    }
+
+    public Double getWeight() {
+        return weight;
     }
 }

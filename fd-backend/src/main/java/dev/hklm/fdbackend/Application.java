@@ -55,16 +55,13 @@ public class Application {
 			Fishdex fishdex = new Fishdex(fishList);
 			fishdexRepository.save(fishdex);
 
-
-			Catch c1 = new Catch("Dresden", 12.3, "Sehr cooler Tag", ZonedDateTime.parse("2016-10-05T08:20:10+05:30[Asia/Kolkata]"), f2.getId(), 1L);
-			Catch c2 = new Catch("BaWü", 15.0, "Ich wurde von Finn gefangen.", ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]"), f1.getId(), 2L);
-			Catch c3 = new Catch("Ostsee", 20.3, "noice.", ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")), f2.getId(), 3L);
+			Catch c1 = new Catch("Dresden", 12.3, 25.4, "Sehr cooler Tag", ZonedDateTime.parse("2016-10-05T08:20:10+05:30[Asia/Kolkata]"), f2.getId(), 1L);
+			Catch c2 = new Catch("BaWü", 15.0, 12.9,"Ich wurde von Finn gefangen.", ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]"), f1.getId(), 2L);
+			Catch c3 = new Catch("Ostsee", 20.3, 90.43, "noice.", ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")), f2.getId(), 3L);
 			List<Catch> catchList = Arrays.asList(c1, c2, c3);
 
 			Diary diary = new Diary(catchList);
 			diaryRepository.save(diary);
-
-
 
 			User u1 = new User("Sweden", "Blahaj", "SHAAA", 3, 1L, 1, 1);
 			User u2 = new User("Super Earth", "John Helldiver", "For Democracy!", 1337, 2L, 2, 2);
