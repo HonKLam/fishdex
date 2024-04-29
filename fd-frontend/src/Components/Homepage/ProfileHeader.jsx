@@ -1,17 +1,19 @@
 import styles from '../../css/ProfileHeader.module.css'
 import ProfilePicture from './ProfilePicture'
 import ProfileText from './ProfileText'
+import PropTypes from 'prop-types'
 
-export default function ProfileHeader() {
-  return (
-    <div className={styles.main_container}>
-      <ProfilePicture />
-      <ProfileText
-        title="Lami Salami"
-        description={
-          'Turbo Loser, Kann das alles ne mehr, will einfach nur nach Hause oder einfach was essen heilige scheise hab ich hunger omg kann endlich Mittag sein'
-        }
-      />
-    </div>
-  )
+ProfileHeader.propTypes = {
+    user: PropTypes.object,
+}
+
+export default function ProfileHeader(props) {
+    const { user } = props
+
+    return (
+        <div className={styles.main_container}>
+            <ProfilePicture image={user.imgUrl} />
+            <ProfileText title={user.username} description={user.description} />
+        </div>
+    )
 }
