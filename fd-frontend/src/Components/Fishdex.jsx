@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { fetchData } from '../utils/api.js'
 import FishdexEntry from './FishdexEntry.jsx'
+import Button from "./General/Button.jsx";
 
 export default function Fishdex() {
   const { data, isLoading, isError } = useQuery('data', () =>
@@ -11,14 +12,20 @@ export default function Fishdex() {
   }
   if (isLoading) return <div>Laden...</div>
   if (isError) return <div>Ein Fehler ist aufgetreten!</div>
+  function handleClick() {
+    window.location.pathname = '/fish/form'
+  }
   return (
     <div className="section fishdex-overview">
       <div className="container">
         <div className="row">
           <div className="col-16 text-wrap">
-            <h1 className="heading">Fishdex</h1>
+            <div className="head-wrap">
+              <h1 className="heading">Fishdex</h1>
+              <Button text="Fischart Hinzufügen" callBack={handleClick}/>
+            </div>
             <p className="description">
-              hier kommt dann ein erklärtext rein Jemand musste
+            hier kommt dann ein erklärtext rein Jemand musste
               Josef K. verleumdet haben, denn ohne dass er etwas
               Böses getan hätte, wurde er eines Morgens verhaftet.
               »Wie ein Hund!« sagte er, es war, als sollte die

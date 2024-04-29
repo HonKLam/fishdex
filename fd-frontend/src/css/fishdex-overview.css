@@ -2,6 +2,15 @@
     .container {
         .row {
             .text-wrap {
+                .head-wrap {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    h1 {
+                        margin-top: 0;
+                    }
+                }
                 .description {
                     margin-left: 10%;
                     padding: 40px 0;

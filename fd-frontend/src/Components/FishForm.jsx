@@ -59,7 +59,7 @@ export default function FishForm() {
       fishImage: file,
     }
     mutate(data)
-
+    window.location.pathname = '/fishdex'
   }
 
   const handleName = (event) => {
