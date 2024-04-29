@@ -1,6 +1,6 @@
 .main_container {
   display: flex;
-  background-image: url('/assets/background2.png');
+  background-image: url('/assets/background.png');
   background-size: cover;
   justify-content: center;
 }

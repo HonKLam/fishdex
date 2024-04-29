@@ -1,7 +1,7 @@
 .activity_container {
   width: 100%;
   height: 150px;
-  background-color: pink;
+  background-color: #c2f1fc;
   display: flex;
   flex-direction: row;
   margin-right: auto;

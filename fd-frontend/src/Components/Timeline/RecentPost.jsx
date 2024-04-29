@@ -4,6 +4,7 @@ import { useQuery } from 'react-query'
 import { fetchData } from '../../utils/api'
 
 import PropTypes from 'prop-types'
+import formatDate from '../../utils/date'
 
 RecentPost.propTypes = {
     entry: PropTypes.object,
@@ -20,12 +21,8 @@ export default function RecentPost(props) {
     if (isLoading) return <div></div>
     if (isError) return <div></div>
 
-    const creationDate = new Date(entry.createdOn)
-        .toLocaleString('de-DE')
-        .split(',')[0]
-    const catchDate = new Date(entry.catchDate)
-        .toLocaleString('de-DE')
-        .split(',')[0]
+    const creationDate = formatDate(entry.createdOn)
+    const catchDate = formatDate(entry.catchDate)
 
     return (
         <div className={styles.main_container}>
