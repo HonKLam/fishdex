@@ -16,18 +16,18 @@ export default function FishForm() {
   const [freshwaterChecked, setFreshwaterChecked] = useState(false)
   const [saltwaterChecked, setSaltwaterChecked] = useState(false)
   const [file, setFile] = useState(null)
+  const [fileUploaded, setFileUploaded] = useState(false);
 
   const { mutate } = useMutation((data) => postData('/fish', data))
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0]
     const reader = new FileReader()
-
     reader.onload = () => {
       const base64Data = reader.result.split(',')[1] // Extract base64 data
       setFile(base64Data) // Set base64 data to state
+      setFileUploaded(true);
     }
-
     reader.readAsDataURL(selectedFile) // Read file as data URL (base64)
   }
 
@@ -116,8 +116,8 @@ export default function FishForm() {
           <div className="row file">
             <img src="https://placehold.co/600x400" className="image"/>
             <div className='file file--upload'>
-              <label htmlFor='input-file'>
-                <i className="material-icons">Bild Hochladen</i>
+              <label htmlFor='input-file' className={fileUploaded ? 'finished' : ''}>
+                <i className="material-icons">{fileUploaded ? 'Bild wurde erfolgreich hochgeladen' : 'Bild Hochladen'}</i>
               </label>
               <input id='input-file' type='file' onChange={handleFileChange}/>
             </div>

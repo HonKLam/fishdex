@@ -1,4 +1,4 @@
-.fish-form.section {
+.fish-form.section, .catch-form.section{
     justify-content: center;
     .container {
         justify-content: center;
@@ -10,6 +10,9 @@
                 justify-content: center;
                 align-items: start ;
                 flex-direction: column;
+                .finished {
+                    background: rgba(0, 255, 0, 0.4);
+                }
             }
 
 

@@ -11,6 +11,7 @@ import Fishdex from './Components/Fishdex.jsx'
 import FishForm from './Components/FishForm.jsx'
 import Homepage from './Components/Homepage/Homepage.jsx'
 import Timeline from './Components/Timeline/Timeline.jsx'
+import CatchForm from "./Components/CatchForm.jsx";
 
 const queryClient = new QueryClient()
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/timeline',
                 element: <Timeline />,
+            },
+            {
+                path: '/timeline/form',
+                element: <CatchForm />,
             },
         ],
     },
