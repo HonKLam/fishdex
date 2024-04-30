@@ -15,5 +15,9 @@
     gap: 50px;
     display: flex;
     flex-direction: row;
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }

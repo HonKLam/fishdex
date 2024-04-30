@@ -49,7 +49,7 @@ export default function CatchForm() {
     event.preventDefault()
     if (location === '') {
       alert("bitte geben sie den ort des Fanges an.")
-
+      return
     }
     if (date === '') {
       alert("Bitte geben sie ein datum an.")
@@ -63,12 +63,12 @@ export default function CatchForm() {
       alert("Bitte geben sie die Fischart an.")
       return
     }
-    if (length === '') {
-      alert("Bitte geben sie die Länge an.")
+    if (length === '')  {
+      alert("Bitte geben sie eine Länge an.")
       return
     }
     if (weight === '') {
-      alert("Bitte geben sie das gewicht des Fisches an.")
+      alert("Bitte geben sie ein gewicht an.")
       return
     }
     const data = {

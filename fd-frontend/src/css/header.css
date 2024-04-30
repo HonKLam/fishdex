@@ -24,6 +24,7 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 55px;
+        list-style: none;
         a {
           text-decoration: none;
           color: black;
