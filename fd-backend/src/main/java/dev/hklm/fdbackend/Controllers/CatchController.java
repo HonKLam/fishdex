@@ -57,7 +57,7 @@ public class CatchController {
      -> wird durch @RequestBody zu einem Catch-Objekt gebaut
      -> Repository holen, Catch hinzufügen, wieder speichern */
     @PostMapping("/catch")
-    public ResponseEntity<Object> addFish(@RequestBody Catch fishCatch) throws IOException {
+    public ResponseEntity<Object> addCatch(@RequestBody Catch fishCatch) throws IOException {
         catchService.addCatch(fishCatch);
         return ResponseEntity.ok(HttpStatus.OK);
     }

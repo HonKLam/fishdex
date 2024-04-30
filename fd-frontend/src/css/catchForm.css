@@ -1,0 +1,46 @@
+.catch-form {
+    .dropdown {
+        margin-top: 20px;
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px grey solid;
+            box-sizing: border-box;
+            background: white;
+        }
+
+        /* Styling for the dropdown arrow */
+        select::after {
+            content: '\25BC'; /* Unicode character for downward arrow */
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none; /* Ensure that the arrow doesn't interfere with clicking the select */
+        }
+
+        /* Styling for the options */
+        option {
+            font-size: 16px;
+        }
+
+    }
+    .double {
+        display: flex;
+        justify-content: space-between;
+        .item-wrap {
+            display: flex;
+            width: 47.5%;
+            flex-direction: column;
+        }
+        .item-wrap:last-child {
+            margin-left: 5%;
+        }
+    }
+}

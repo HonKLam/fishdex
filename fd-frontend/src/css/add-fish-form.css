@@ -1,18 +1,90 @@
-.fish-form.section {
+.fish-form.section, .catch-form.section{
     justify-content: center;
     .container {
         justify-content: center;
         display: flex;
         form {
+            .file {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: start ;
+                flex-direction: column;
+                .finished {
+                    background: rgba(0, 255, 0, 0.4);
+                }
+            }
+
+
+            .file > input[type='file'] {
+                display: none
+            }
+
+            .file > label {
+                padding: 10px 40px;
+                background-color: white;
+                border: solid black 1px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: black;
+            }
+
+            .file > label:hover {
+                border-color: hsl(0, 0%, 21%);
+            }
+
+            .file > label:active {
+                background-color: hsl(0, 0%, 96%);
+            }
+
+            .file > label > i {
+                padding-right: 5px;
+                font-style: normal;
+
+            }
             display: flex;
             flex-direction: column;
-            width: fit-content;
+            width: 100%;
+            .row-col {
+                flex-direction: column;
+            }
             .row {
-                justify-content: space-between;
+                position: relative;
+
                 display: flex;
-                gap: 25px;
+                gap: 15px;
+                padding-top: 15px;
+                .fish-name {
+                    width: 50%;
+                }
+                .fish-info {
+                    width: 100%;
+                }
+                .bait {
+                    width: 75%;
+                }
+                input, textarea{
+                    border-radius: 5px;
+                    border: 1px grey solid;                }
+                .image {
+                    max-width: 250px;
+                    max-height: 250px;
+                    object-fit: contain;
+                    overflow: clip;
+                }
+            }
+            .submit-btn {
+                padding-top: 15px;
+                justify-content: center;
+                display: flex;
             }
         }
+    }
+    .required::after {
+        content: "*";
+        color: var(--secondary-color);
+        position: absolute;
+        margin-left: 5px;
     }
 
 }
