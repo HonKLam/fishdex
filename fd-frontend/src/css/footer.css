@@ -1,10 +1,14 @@
 .footer {
   display: flex;
   height: 56px;
+  width: 100%;
   justify-content: center;
   background-color: #0d5977;
   color: white;
-
+  .container {
+    background: unset;
+    padding: 0 5%;
+  }
   ul {
     list-style: none;
     justify-content: center;

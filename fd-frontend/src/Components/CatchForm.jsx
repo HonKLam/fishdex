@@ -123,7 +123,7 @@ export default function CatchForm() {
         <form onSubmit={handleSubmit}>
           <div className="row file">
             <img
-              src="https://placehold.co/600x400"
+              src="./../../public/assets/bsp.jpg"
               className="image"
             />
             <div className="file file--upload">

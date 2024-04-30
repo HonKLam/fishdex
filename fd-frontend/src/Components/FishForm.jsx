@@ -100,12 +100,12 @@ export default function FishForm() {
     }
   });
   return (
-    <div className="section fish-form">
-      <div className="container">
+    <div className="section fish-form main_container">
+      <div className="container inner_container">
         <form onSubmit={handleSubmit}>
           <div className="row file">
             <img
-              src="https://placehold.co/600x400"
+              src="./../../public/assets/bsp.jpg"
               className="image"
             />
             <div className="file file--upload">
