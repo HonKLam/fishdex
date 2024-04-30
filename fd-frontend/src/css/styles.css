@@ -14,7 +14,7 @@ body {
 }
 .big-content-wrapper {
   min-height: calc(100vh - 56px);
-  background-image: url("./../../public/assets/Zeichenflache_1.png");
+  background-image: url("./../../public/assets/background.png");
   padding: 20px 0;
 }
 .container {

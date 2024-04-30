@@ -13,8 +13,8 @@ export default function CatchForm() {
   const [location, setLocation] = useState('')
   const [file, setFile] = useState(null)
   const [fileUploaded, setFileUploaded] = useState(false)
-  const [weight, setWeight] = useState()
-  const [length, setLength] = useState()
+  const [weight, setWeight] = useState('')
+  const [length, setLength] = useState('')
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
   const [selectedOption, setSelectedOption] = useState('')
@@ -47,6 +47,30 @@ export default function CatchForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (location === '') {
+      alert("bitte geben sie den ort des Fanges an.")
+
+    }
+    if (date === '') {
+      alert("Bitte geben sie ein datum an.")
+      return
+    }
+    if (time === '') {
+      alert("Bitte geben sie die Uhrzeit des Fanges an.")
+      return
+    }
+    if (selectedId === '') {
+      alert("Bitte geben sie die Fischart an.")
+      return
+    }
+    if (length === '') {
+      alert("Bitte geben sie die Länge an.")
+      return
+    }
+    if (weight === '') {
+      alert("Bitte geben sie das gewicht des Fisches an.")
+      return
+    }
     const data = {
       catchDate: formatDateAndTime(date, time),
       location: location,
@@ -56,8 +80,10 @@ export default function CatchForm() {
       description: description,
       fishId: selectedId,
     }
-    mutate(data)
-    window.location.pathname = '/timeline'
+    if (weight !== '' && length !== '' && selectedId !== '' && time !== '' && date !== '' && location !== '') {
+      mutate(data)
+      window.location.pathname = '/timeline'
+    }
   }
   function formatDateAndTime(inputDate, inputTime) {
     // Split the input date and time
@@ -153,7 +179,7 @@ export default function CatchForm() {
             />
           </div>
           <div className="row row-col">
-            <label>Wo wurde der Fisch gefangen?</label>
+            <label className="required">Wo wurde der Fisch gefangen?</label>
             <input
               className="location"
               name="location"
@@ -162,7 +188,7 @@ export default function CatchForm() {
           </div>
           <div className="row double">
             <div className="item-wrap">
-              <label>Datum</label>
+              <label className="required">Datum</label>
               <input
                 className="date"
                 name="date"
@@ -172,7 +198,7 @@ export default function CatchForm() {
               />
             </div>
             <div className="item-wrap">
-              <label>Uhrzeit</label>
+              <label className="required">Uhrzeit</label>
               <input
                 className="time"
                 name="time"
@@ -184,7 +210,7 @@ export default function CatchForm() {
 
           </div>
           <div className="dropdown">
-            <label htmlFor="dropdown">Welche Fishcart haben Sie gefangen?</label>
+            <label htmlFor="dropdown" className="required">Welche Fishcart haben Sie gefangen?</label>
             <select
               id="dropdown"
               value={selectedOption}
@@ -200,7 +226,7 @@ export default function CatchForm() {
           </div>
           <div className="row double">
             <div className="item-wrap">
-              <label>Gewicht in Kg</label>
+              <label className="required">Gewicht in Kg</label>
               <input
                 className="weight"
                 name="weight"
@@ -208,7 +234,7 @@ export default function CatchForm() {
               />
             </div>
             <div className="item-wrap">
-              <label>Länge in cm</label>
+              <label className="required">Länge in cm</label>
               <input
                 className="length"
                 name="length"
