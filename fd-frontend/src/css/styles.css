@@ -4,6 +4,7 @@
 @import 'fishdex-overview.css';
 @import 'add-fish-form.css';
 @import "404.css";
+@import "catchForm.css";
 
 body {
   margin: 0;

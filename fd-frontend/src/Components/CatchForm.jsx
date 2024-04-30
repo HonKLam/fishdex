@@ -160,32 +160,37 @@ export default function CatchForm() {
               onChange={handleLocation}
             />
           </div>
-          <div className="row">
-            <label>Datum</label>
-            <input
-              className="date"
-              name="date"
-              placeholder="DD-MM-YYYY"
-              alt="Format: DD-MM-YYYY"
-              onChange={handleDate}
-            />
-            <label>Uhrzeit</label>
-            <input
-              className="time"
-              name="time"
-              placeholder="13:00"
-              alt="Format: 13:00"
-              onChange={handleTime}
-            />
+          <div className="row double">
+            <div className="item-wrap">
+              <label>Datum</label>
+              <input
+                className="date"
+                name="date"
+                placeholder="DD-MM-YYYY"
+                alt="Format: DD-MM-YYYY"
+                onChange={handleDate}
+              />
+            </div>
+            <div className="item-wrap">
+              <label>Uhrzeit</label>
+              <input
+                className="time"
+                name="time"
+                placeholder="13:00"
+                alt="Format: 13:00"
+                onChange={handleTime}
+              />
+            </div>
+
           </div>
           <div className="dropdown">
-            <label htmlFor="dropdown">Select a Name:</label>
+            <label htmlFor="dropdown">Welche Fishcart haben Sie gefangen?</label>
             <select
               id="dropdown"
               value={selectedOption}
               onChange={handleSelectChange}
             >
-              <option value="">Select an option</option>
+              <option value="">Wähle eine option</option>
               {data.map((item, index) => (
                 <option key={index} value={item.name}>
                   {item.name}
@@ -193,19 +198,23 @@ export default function CatchForm() {
               ))}
             </select>
           </div>
-          <div className="row ">
-            <label>Gewicht in Kg</label>
-            <input
-              className="weight"
-              name="weight"
-              onChange={handleWeight}
-            />
-            <label>Länge in cm</label>
-            <input
-              className="length"
-              name="length"
-              onChange={handleLength}
-            />
+          <div className="row double">
+            <div className="item-wrap">
+              <label>Gewicht in Kg</label>
+              <input
+                className="weight"
+                name="weight"
+                onChange={handleWeight}
+              />
+            </div>
+            <div className="item-wrap">
+              <label>Länge in cm</label>
+              <input
+                className="length"
+                name="length"
+                onChange={handleLength}
+              />
+            </div>
           </div>
           <div className="submit-btn">
             <Button

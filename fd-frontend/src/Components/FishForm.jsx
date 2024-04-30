@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
 import Button from './General/Button.jsx'
@@ -46,6 +46,14 @@ export default function FishForm() {
       alert('Bitte geben Sie einen Fischnamen an.')
       return
     }
+    let selectedWater = '';
+    if (freshwaterChecked && saltwaterChecked) {
+      selectedWater = 'saltwater & freshwater';
+    } else if (freshwaterChecked) {
+      selectedWater = 'freshwater';
+    } else if (saltwaterChecked) {
+      selectedWater = 'saltwater';
+    }
     const data = {
       name: fishName,
       extraInfo: fishInformation,
@@ -65,10 +73,6 @@ export default function FishForm() {
 
   const handleBait = (event) => {
     setBait(event.target.value)
-  }
-
-  const handleWater = (event) => {
-    setWater(event.target.value)
   }
 
   const handleInfos = (event) => {
@@ -91,16 +95,10 @@ export default function FishForm() {
 
   const handleFreshwaterChange = (event) => {
     setFreshwaterChecked(event.target.checked)
-    if (event.target.checked) {
-      setSaltwaterChecked(false)
-    }
   }
 
   const handleSaltwaterChange = (event) => {
     setSaltwaterChecked(event.target.checked)
-    if (event.target.checked) {
-      setFreshwaterChecked(false)
-    }
   }
 
   return (
