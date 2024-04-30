@@ -2,9 +2,6 @@ import { useState , useEffect} from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
 import Button from './General/Button.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ReactDOM from 'react-dom/client'
-
 export default function FishForm() {
   const [fishName, setFishName] = useState('')
   const [fishInformation, setFishInformation] = useState('')
@@ -46,14 +43,7 @@ export default function FishForm() {
       alert('Bitte geben Sie einen Fischnamen an.')
       return
     }
-    let selectedWater = '';
-    if (freshwaterChecked && saltwaterChecked) {
-      selectedWater = 'saltwater & freshwater';
-    } else if (freshwaterChecked) {
-      selectedWater = 'freshwater';
-    } else if (saltwaterChecked) {
-      selectedWater = 'saltwater';
-    }
+
     const data = {
       name: fishName,
       extraInfo: fishInformation,
@@ -100,7 +90,15 @@ export default function FishForm() {
   const handleSaltwaterChange = (event) => {
     setSaltwaterChecked(event.target.checked)
   }
-
+  useEffect(() => {
+    if (freshwaterChecked && saltwaterChecked) {
+      setWater('saltwater & freshwater') ;
+    } else if (freshwaterChecked) {
+      setWater('freshwater') ;
+    } else if (saltwaterChecked) {
+      setWater('saltwater');
+    }
+  });
   return (
     <div className="section fish-form">
       <div className="container">
