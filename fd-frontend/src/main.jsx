@@ -14,6 +14,7 @@ import Timeline from './Components/Timeline/Timeline.jsx'
 import FishInfo, {
   loader as fishLoader,
 } from './Components/Fishdex/FishInfo.jsx'
+import CatchForm from "./Components/CatchForm.jsx";
 
 const queryClient = new QueryClient()
 
@@ -45,6 +46,32 @@ const router = createBrowserRouter([
       },
     ],
   },
+    {
+        element: <App />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: '/',
+                element: <Homepage />,
+            },
+            {
+                path: '/fishdex',
+                element: <Fishdex />,
+            },
+            {
+                path: '/fish/form',
+                element: <FishForm />,
+            },
+            {
+                path: '/timeline',
+                element: <Timeline />,
+            },
+            {
+                path: '/timeline/form',
+                element: <CatchForm />,
+            },
+        ],
+    },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

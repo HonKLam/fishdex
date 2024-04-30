@@ -14,3 +14,24 @@ body {
     --text-color: #000000;
     --animation-duration: 0.3s;
 }
+.btn-primary {
+    border: gray 2px solid;
+    background: white;
+    max-width: 250px;
+    padding: 1.5% 5%;
+    border-radius: 5px ;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    margin: 25px;
+    color: black;
+    transition-duration: var(--animation-duration);
+}
+.btn-primary:hover {
+    color: white;
+    background: grey;
+    border-radius: 0;
+
+}
