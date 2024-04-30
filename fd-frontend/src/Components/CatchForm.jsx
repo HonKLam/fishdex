@@ -1,39 +1,37 @@
 import { useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
-import Button from "./General/Button.jsx";
-
+import Button from './General/Button.jsx'
 
 export default function CatchForm() {
-
   const { data, isLoading, isError } = useQuery('data', () =>
     fetchData('/fishdex')
   )
 
   const [fishName, setFishName] = useState('')
   const [description, setDescription] = useState('')
-  const [location,setLocation] = useState('')
+  const [location, setLocation] = useState('')
   const [file, setFile] = useState(null)
-  const [fileUploaded, setFileUploaded] = useState(false);
+  const [fileUploaded, setFileUploaded] = useState(false)
   const [weight, setWeight] = useState()
   const [length, setLength] = useState()
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selectedId, setSelectedId] = useState('');
+  const [selectedOption, setSelectedOption] = useState('')
+  const [selectedId, setSelectedId] = useState('')
 
   const handleSelectChange = (event) => {
-    const selectedName = event.target.value;
-    setSelectedOption(selectedName);
+    const selectedName = event.target.value
+    setSelectedOption(selectedName)
 
     // Find the corresponding ID based on the selected name
-    const selectedObject = data.find(item => item.name === selectedName);
+    const selectedObject = data.find((item) => item.name === selectedName)
     if (selectedObject) {
-      setSelectedId(selectedObject.id);
+      setSelectedId(selectedObject.id)
     } else {
-      setSelectedId(''); // Reset the selected ID if the name is not found
+      setSelectedId('') // Reset the selected ID if the name is not found
     }
-  };
+  }
   const { mutate } = useMutation((data) => postData('/catch', data))
 
   const handleFileChange = (event) => {
@@ -42,7 +40,7 @@ export default function CatchForm() {
     reader.onload = () => {
       const base64Data = reader.result.split(',')[1] // Extract base64 data
       setFile(base64Data) // Set base64 data to state
-      setFileUploaded(true);
+      setFileUploaded(true)
     }
     reader.readAsDataURL(selectedFile) // Read file as data URL (base64)
   }
@@ -52,43 +50,50 @@ export default function CatchForm() {
     const data = {
       catchDate: formatDateAndTime(date, time),
       location: location,
-      ImageURL: file,
+      catchImage: file,
       length: length,
-      Weight: weight,
+      weight: weight,
       description: description,
       fishId: selectedId,
-
-
     }
     mutate(data)
     window.location.pathname = '/timeline'
   }
-  function formatDateAndTime(inputDate,inputTime) {
+  function formatDateAndTime(inputDate, inputTime) {
     // Split the input date and time
-    const [day, month, year] = inputDate.split('-');
-    const [hours, minutes] = inputTime.split(':');
+    const [day, month, year] = inputDate.split('-')
+    const [hours, minutes] = inputTime.split(':')
 
     // Create a new Date object using the provided date and time
-    const formattedDate = new Date(year, month - 1, day, hours, minutes);
+    const formattedDate = new Date(year, month - 1, day, hours, minutes)
 
     // Get the components of the formatted date
-    const formattedYear = formattedDate.getFullYear();
-    const formattedMonth = String(formattedDate.getMonth() + 1).padStart(2, '0');
-    const formattedDay = String(formattedDate.getDate()).padStart(2, '0');
-    const formattedHours = String(formattedDate.getHours()).padStart(2, '0');
-    const formattedMinutes = String(formattedDate.getMinutes()).padStart(2, '0');
-    const formattedSeconds = String(formattedDate.getSeconds()).padStart(2, '0');
+    const formattedYear = formattedDate.getFullYear()
+    const formattedMonth = String(formattedDate.getMonth() + 1).padStart(
+      2,
+      '0'
+    )
+    const formattedDay = String(formattedDate.getDate()).padStart(2, '0')
+    const formattedHours = String(formattedDate.getHours()).padStart(2, '0')
+    const formattedMinutes = String(formattedDate.getMinutes()).padStart(
+      2,
+      '0'
+    )
+    const formattedSeconds = String(formattedDate.getSeconds()).padStart(
+      2,
+      '0'
+    )
 
     // Get the time zone offset in minutes and convert it to hours and minutes
-    const timeZoneOffset = formattedDate.getTimezoneOffset();
-    const offsetHours = Math.floor(Math.abs(timeZoneOffset) / 60);
-    const offsetMinutes = Math.abs(timeZoneOffset) % 60;
-    const offsetSign = timeZoneOffset < 0 ? '+' : '-';
+    const timeZoneOffset = formattedDate.getTimezoneOffset()
+    const offsetHours = Math.floor(Math.abs(timeZoneOffset) / 60)
+    const offsetMinutes = Math.abs(timeZoneOffset) % 60
+    const offsetSign = timeZoneOffset < 0 ? '+' : '-'
 
     // Construct the formatted date and time string
-    const formattedDateTime = `${formattedYear}-${formattedMonth}-${formattedDay}T${formattedHours}:${formattedMinutes}:${formattedSeconds}${offsetSign}${String(offsetHours).padStart(2, '0')}:${String(offsetMinutes).padStart(2, '0')}`;
+    const formattedDateTime = `${formattedYear}-${formattedMonth}-${formattedDay}T${formattedHours}:${formattedMinutes}:${formattedSeconds}${offsetSign}${String(offsetHours).padStart(2, '0')}:${String(offsetMinutes).padStart(2, '0')}`
 
-    return formattedDateTime;
+    return formattedDateTime
   }
   const handleComment = (event) => {
     setDescription(event.target.value)
@@ -117,37 +122,69 @@ export default function CatchForm() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="row file">
-            <img src="https://placehold.co/600x400" className="image"/>
-            <div className='file file--upload'>
-              <label htmlFor='input-file' className={fileUploaded ? 'finished' : ''}>
-                <i
-                  className="material-icons">{fileUploaded ? 'Bild wurde erfolgreich hochgeladen' : 'Bild Hochladen'}</i>
+            <img
+              src="https://placehold.co/600x400"
+              className="image"
+            />
+            <div className="file file--upload">
+              <label
+                htmlFor="input-file"
+                className={fileUploaded ? 'finished' : ''}
+              >
+                <i className="material-icons">
+                  {fileUploaded
+                    ? 'Bild wurde erfolgreich hochgeladen'
+                    : 'Bild Hochladen'}
+                </i>
               </label>
-              <input id='input-file' type='file' onChange={handleFileChange}/>
+              <input
+                id="input-file"
+                type="file"
+                onChange={handleFileChange}
+              />
             </div>
           </div>
           <div className="row row-col">
             <label>Kommentar</label>
-            <textarea className="fish-comment" name="fish-comment" onChange={handleComment}/>
+            <textarea
+              className="fish-comment"
+              name="fish-comment"
+              onChange={handleComment}
+            />
           </div>
           <div className="row row-col">
             <label>Wo wurde der Fisch gefangen?</label>
-            <input className="location" name="location" onChange={handleLocation}/>
+            <input
+              className="location"
+              name="location"
+              onChange={handleLocation}
+            />
           </div>
           <div className="row">
-            <label>
-              Datum
-            </label>
-            <input className="date" name="date" placeholder="DD-MM-YYYY" alt="Format: DD-MM-YYYY"
-                   onChange={handleDate}/>
-            <label>
-              Uhrzeit
-            </label>
-            <input className="time" name="time" placeholder="13:00" alt="Format: 13:00" onChange={handleTime}/>
+            <label>Datum</label>
+            <input
+              className="date"
+              name="date"
+              placeholder="DD-MM-YYYY"
+              alt="Format: DD-MM-YYYY"
+              onChange={handleDate}
+            />
+            <label>Uhrzeit</label>
+            <input
+              className="time"
+              name="time"
+              placeholder="13:00"
+              alt="Format: 13:00"
+              onChange={handleTime}
+            />
           </div>
           <div className="dropdown">
             <label htmlFor="dropdown">Select a Name:</label>
-            <select id="dropdown" value={selectedOption} onChange={handleSelectChange}>
+            <select
+              id="dropdown"
+              value={selectedOption}
+              onChange={handleSelectChange}
+            >
               <option value="">Select an option</option>
               {data.map((item, index) => (
                 <option key={index} value={item.name}>
@@ -157,17 +194,24 @@ export default function CatchForm() {
             </select>
           </div>
           <div className="row ">
-            <label>
-              Gewicht in Kg
-            </label>
-            <input className="weight" name="weight" onChange={handleWeight}/>
-            <label>
-              Länge in cm
-            </label>
-            <input className="length" name="length" onChange={handleLength}/>
+            <label>Gewicht in Kg</label>
+            <input
+              className="weight"
+              name="weight"
+              onChange={handleWeight}
+            />
+            <label>Länge in cm</label>
+            <input
+              className="length"
+              name="length"
+              onChange={handleLength}
+            />
           </div>
           <div className="submit-btn">
-            <Button text="Beitrag anlegen" callBack={handleSubmit}/>
+            <Button
+              text="Beitrag anlegen"
+              callBack={handleSubmit}
+            />
           </div>
         </form>
       </div>

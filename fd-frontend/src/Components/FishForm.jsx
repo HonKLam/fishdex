@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
-import Button from "./General/Button.jsx";
+import Button from './General/Button.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
-
 
 export default function FishForm() {
   const [fishName, setFishName] = useState('')
@@ -16,7 +15,7 @@ export default function FishForm() {
   const [freshwaterChecked, setFreshwaterChecked] = useState(false)
   const [saltwaterChecked, setSaltwaterChecked] = useState(false)
   const [file, setFile] = useState(null)
-  const [fileUploaded, setFileUploaded] = useState(false);
+  const [fileUploaded, setFileUploaded] = useState(false)
 
   const { mutate } = useMutation((data) => postData('/fish', data))
 
@@ -26,7 +25,7 @@ export default function FishForm() {
     reader.onload = () => {
       const base64Data = reader.result.split(',')[1] // Extract base64 data
       setFile(base64Data) // Set base64 data to state
-      setFileUploaded(true);
+      setFileUploaded(true)
     }
     reader.readAsDataURL(selectedFile) // Read file as data URL (base64)
   }
@@ -44,9 +43,7 @@ export default function FishForm() {
       return
     }
     if (!fishName) {
-      alert(
-        'Bitte geben Sie einen Fischnamen an.'
-      )
+      alert('Bitte geben Sie einen Fischnamen an.')
       return
     }
     const data = {
@@ -55,7 +52,7 @@ export default function FishForm() {
       water: water,
       bait: bait,
       edible: edibleChecked,
-      count: 0,
+      counter: 0,
       fishImage: file,
     }
     mutate(data)
@@ -85,9 +82,6 @@ export default function FishForm() {
     }
   }
 
-  const handleImg = (event) => {
-    setImage(event.target.value)
-  }
   const handleNotEdibleChange = (event) => {
     setNotEdibleChecked(event.target.checked)
     if (event.target.checked) {
@@ -114,27 +108,51 @@ export default function FishForm() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="row file">
-            <img src="https://placehold.co/600x400" className="image"/>
-            <div className='file file--upload'>
-              <label htmlFor='input-file' className={fileUploaded ? 'finished' : ''}>
-                <i className="material-icons">{fileUploaded ? 'Bild wurde erfolgreich hochgeladen' : 'Bild Hochladen'}</i>
+            <img
+              src="https://placehold.co/600x400"
+              className="image"
+            />
+            <div className="file file--upload">
+              <label
+                htmlFor="input-file"
+                className={fileUploaded ? 'finished' : ''}
+              >
+                <i className="material-icons">
+                  {fileUploaded
+                    ? 'Bild wurde erfolgreich hochgeladen'
+                    : 'Bild Hochladen'}
+                </i>
               </label>
-              <input id='input-file' type='file' onChange={handleFileChange}/>
+              <input
+                id="input-file"
+                type="file"
+                onChange={handleFileChange}
+              />
             </div>
           </div>
-          <div className="row row-col" >
+          <div className="row row-col">
             <label className="required">Fischart:</label>
-            <input className="fish-name" name="fish-kind" onChange={handleName}/>
+            <input
+              className="fish-name"
+              name="fish-kind"
+              onChange={handleName}
+            />
           </div>
           <div className="row row-col">
             <label>Informationen über die Fischart:</label>
-            <textarea className="fish-info" name="fish-info" onChange={handleInfos} />
+            <textarea
+              className="fish-info"
+              name="fish-info"
+              onChange={handleInfos}
+            />
           </div>
           <div className="row">
-            <label className="required">In welchen Gewässern ist der Fisch zu finden?</label>
+            <label className="required">
+              In welchen Gewässern ist der Fisch zu finden?
+            </label>
           </div>
           <div className="row">
-            <label >
+            <label>
               Süßwasser
               <input
                 type="checkbox"
@@ -152,7 +170,9 @@ export default function FishForm() {
             </label>
           </div>
           <div className="row">
-            <label className="required">Ist der Fisch essbar?</label>
+            <label className="required">
+              Ist der Fisch essbar?
+            </label>
           </div>
           <div className="row">
             <label>
@@ -176,10 +196,17 @@ export default function FishForm() {
           </div>
           <div className="row row-col">
             <label>Geeignete Köder für den Fisch</label>
-            <input className="bait" name="bait" onChange={handleBait} />
+            <input
+              className="bait"
+              name="bait"
+              onChange={handleBait}
+            />
           </div>
           <div className="submit-btn">
-            <Button text="Fischart anlegen" callBack={handleSubmit}/>
+            <Button
+              text="Fischart anlegen"
+              callBack={handleSubmit}
+            />
           </div>
         </form>
       </div>
