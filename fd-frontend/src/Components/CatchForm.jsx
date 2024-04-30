@@ -48,27 +48,27 @@ export default function CatchForm() {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (location === '') {
-      alert("bitte geben sie den ort des Fanges an.")
+      alert('bitte geben sie den ort des Fanges an.')
       return
     }
     if (date === '') {
-      alert("Bitte geben sie ein datum an.")
+      alert('Bitte geben sie ein datum an.')
       return
     }
     if (time === '') {
-      alert("Bitte geben sie die Uhrzeit des Fanges an.")
+      alert('Bitte geben sie die Uhrzeit des Fanges an.')
       return
     }
     if (selectedId === '') {
-      alert("Bitte geben sie die Fischart an.")
+      alert('Bitte geben sie die Fischart an.')
       return
     }
-    if (length === '')  {
-      alert("Bitte geben sie eine Länge an.")
+    if (length === '') {
+      alert('Bitte geben sie eine Länge an.')
       return
     }
     if (weight === '') {
-      alert("Bitte geben sie ein gewicht an.")
+      alert('Bitte geben sie ein gewicht an.')
       return
     }
     const data = {
@@ -80,7 +80,14 @@ export default function CatchForm() {
       description: description,
       fishId: selectedId,
     }
-    if (weight !== '' && length !== '' && selectedId !== '' && time !== '' && date !== '' && location !== '') {
+    if (
+      weight !== '' &&
+      length !== '' &&
+      selectedId !== '' &&
+      time !== '' &&
+      date !== '' &&
+      location !== ''
+    ) {
       mutate(data)
       window.location.pathname = '/timeline'
     }
@@ -148,10 +155,7 @@ export default function CatchForm() {
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="row file">
-            <img
-              src="./../../public/assets/bsp.jpg"
-              className="image"
-            />
+            <img src="/assets/bsp.jpg" className="image" />
             <div className="file file--upload">
               <label
                 htmlFor="input-file"
@@ -179,7 +183,9 @@ export default function CatchForm() {
             />
           </div>
           <div className="row row-col">
-            <label className="required">Wo wurde der Fisch gefangen?</label>
+            <label className="required">
+              Wo wurde der Fisch gefangen?
+            </label>
             <input
               className="location"
               name="location"
@@ -207,10 +213,11 @@ export default function CatchForm() {
                 onChange={handleTime}
               />
             </div>
-
           </div>
           <div className="dropdown">
-            <label htmlFor="dropdown" className="required">Welche Fishcart haben Sie gefangen?</label>
+            <label htmlFor="dropdown" className="required">
+              Welche Fishcart haben Sie gefangen?
+            </label>
             <select
               id="dropdown"
               value={selectedOption}

@@ -19,8 +19,8 @@ export default function Timeline() {
   }
 
   return (
-    <div className="section">
-      <div className="container">
+    <div className={styles.main_container}>
+      <div className={styles.inner_container}>
         <span id={styles.bar_span}>
           <h1 id={styles.bar_h1}>
             {user.data && user.data.username}s Timeline
