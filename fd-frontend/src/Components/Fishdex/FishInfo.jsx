@@ -27,21 +27,19 @@ export default function FishInfo() {
   return (
     <div className={styles.fish_info_container}>
       <div className={styles.fish_info_inner_container}>
-        <Button text="Zurück" callBack={handleBack} />
-        <h1>{data.name}</h1>
+        <div className={styles.back_button}>
+          <Button text="Zurück" callBack={handleBack} />
+        </div>
+        <h1 id={styles.title}>{data.name}</h1>
         <div className={styles.info_block}>
-          <img src="/assets/Salmon.png" />
+          <img src={data.imgURL} />
           <div className={styles.info_text}>
-            <p>
-              Info zum Fish Info zum Fish Info zum Fish Info zum
-              Fish Info zum Fish Info zum Fish Info zum Fish Info
-              zum Fish Info zum Fish Info zum Fish Info zum Fish
-              Info zum Fish
-            </p>
-            <p>Salzig (wie ich)</p>
-            <p>Essbar</p>
-            <p>Köder</p>
-            <p>Anzahl Gefangen: 3</p>
+            <p id={styles.text}>{data.extraInfo}</p>
+            <hr id={styles.line} />
+            <p>{data.water}</p>
+            <p>{data.edible ? 'Essbar' : 'Nicht Essbar'}</p>
+            <p>Köder: {data.bait}</p>
+            <p>Anzahl Gefangen: {data.counter}</p>
           </div>
         </div>
       </div>
