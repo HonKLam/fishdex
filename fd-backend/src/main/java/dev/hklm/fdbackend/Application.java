@@ -47,9 +47,9 @@ public class Application {
 	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository) {
 		return (args) -> {
 
-			Fish f1 = new Fish( 0, "Koenigslachs", "fresh- and saltwater", "live bait", true, "tasty", 1L );
-			Fish f2 = new Fish(0, "Neon", "freshwater", "use a net", false, "colorful", 2L );
-			Fish f3 = new Fish(0, "Weiser Hai", "saltwater", "bookworms", false, "smart boi", 3L);
+			Fish f1 = new Fish( 0, "Koenigslachs", "Süß- und Salzwasser", "live bait", true, "tasty", 1L );
+			Fish f2 = new Fish(0, "Neon", "Süßwasser", "use a net", false, "colorful", 2L );
+			Fish f3 = new Fish(0, "Weiser Hai", "Salzwasser", "bookworms", false, "smart boi", 3L);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 
 			Fishdex fishdex = new Fishdex(fishList);

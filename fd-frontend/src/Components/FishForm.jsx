@@ -92,16 +92,17 @@ export default function FishForm() {
   }
   useEffect(() => {
     if (freshwaterChecked && saltwaterChecked) {
-      setWater('saltwater & freshwater')
+      setWater('Süß- und Salzwasser')
     } else if (freshwaterChecked) {
-      setWater('freshwater')
+      setWater('Süßwasser')
     } else if (saltwaterChecked) {
-      setWater('saltwater')
+      setWater('Salzwasser')
     }
   }, [water, freshwaterChecked, saltwaterChecked])
   return (
     <div className="section fish-form main_container">
       <div className="container inner_container">
+        <h1>Fisch hinzufügen</h1>
         <form onSubmit={handleSubmit}>
           <div className="row file">
             <img src="/assets/bsp.jpg" className="image" />

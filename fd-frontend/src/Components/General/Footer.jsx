@@ -3,11 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="row">
-          <ul>
-            <li>
-              <a href="/Impressum">Impressum</a>
-            </li>
-          </ul>
+          <p>Impressum</p>
         </div>
       </div>
     </footer>

@@ -9,6 +9,7 @@
   .container {
     justify-content: center;
     display: flex;
+    flex-direction: column;
 
     background-color: white;
     border: solid black 1px;

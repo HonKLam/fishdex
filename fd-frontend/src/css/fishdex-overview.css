@@ -36,6 +36,11 @@
       justify-content: start;
       gap: 70px;
 
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
       .fishdex-entry:hover {
         img {
           scale: 1.1;
@@ -63,6 +68,8 @@
             height: 200px;
             border-radius: 15px;
             object-fit: cover;
+            border: solid black 1px;
+            border-radius: 10px;
           }
         }
       }

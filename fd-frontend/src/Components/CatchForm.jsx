@@ -153,6 +153,7 @@ export default function CatchForm() {
   return (
     <div className="section catch-form">
       <div className="container">
+        <h1>Fang hinzufügen</h1>
         <form onSubmit={handleSubmit}>
           <div className="row file">
             <img src="/assets/bsp.jpg" className="image" />

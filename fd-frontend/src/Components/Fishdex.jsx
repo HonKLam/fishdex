@@ -31,7 +31,11 @@ export default function Fishdex() {
         <div className="card-wrap">
           {data.map((item, index) => {
             return (
-              <a className="fishdex-entry" key={index}>
+              <a
+                href={`/fishdex/${item.id}`}
+                className="fishdex-entry"
+                key={index}
+              >
                 <div className="img-wrap">
                   {item.imgURL && <img src={item.imgURL} />}
                 </div>
