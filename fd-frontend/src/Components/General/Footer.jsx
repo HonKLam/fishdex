@@ -5,13 +5,7 @@ export default function Footer() {
         <div className="row">
           <ul>
             <li>
-              <a>Impressum</a>
-            </li>
-            <li>
-              <a>Impressum</a>
-            </li>
-            <li>
-              <a>Impressum</a>
+              <a href="/Impressum">Impressum</a>
             </li>
           </ul>
         </div>

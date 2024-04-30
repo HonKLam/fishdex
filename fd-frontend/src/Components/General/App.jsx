@@ -7,7 +7,9 @@ export default function App() {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className="big-content-wrapper">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   )

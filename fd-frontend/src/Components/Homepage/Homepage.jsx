@@ -13,9 +13,9 @@ export default function Homepage() {
     if (isError) return <div></div>
 
     return (
-        <main className={styles.main_container}>
+        <main className="section">
             {data && (
-                <div className={styles.inner_container}>
+                <div className="container">
                     <ProfileHeader user={data} />
                     <RecentPosts user={data} />
                 </div>

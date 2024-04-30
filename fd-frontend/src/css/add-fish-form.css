@@ -68,7 +68,7 @@
                     border: 1px grey solid;                }
                 .image {
                     max-width: 250px;
-                    max-height: 250px;
+                    max-height: 200px;
                     object-fit: contain;
                     overflow: clip;
                 }
