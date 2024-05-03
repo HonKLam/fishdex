@@ -1,6 +1,6 @@
 .catch-form {
     .required::after {
-        content: "*";
+        content: '*';
         color: var(--secondary-color);
         position: absolute;
         margin-left: 5px;
@@ -35,7 +35,6 @@
         option {
             font-size: 16px;
         }
-
     }
     .double {
         display: flex;
@@ -49,5 +48,4 @@
             margin-left: 5%;
         }
     }
-
 }

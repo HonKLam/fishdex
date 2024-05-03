@@ -1,62 +1,62 @@
 .main_container {
-  width: 100%;
-  height: fit-content;
-  background-color: white;
-  border: solid black 1px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 3%;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
 }
 
 .top_left {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .row {
-  display: flex;
-  width: 100%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    flex-direction: row;
+    align-items: center;
 }
 
 h2 {
-  margin: 0;
+    margin: 0;
 }
 
 p {
-  margin: 0;
-  margin-bottom: 1%;
+    margin: 0;
+    margin-bottom: 1%;
 }
 
 .text {
-  width: 80%;
-  margin-left: 2%;
+    width: 80%;
+    margin-left: 2%;
 }
 
 .rp_bottom {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  height: fit-content;
-  margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: fit-content;
+    margin-bottom: 2%;
 }
 
 .bottom_left {
-  margin-left: 12%;
-  width: 50%;
+    margin-left: 12%;
+    width: 50%;
 }
 
 .bottom_right {
-  margin-left: 50px;
-  margin-bottom: 3%;
+    margin-left: 50px;
+    margin-bottom: 3%;
 }
 
 #prevImg {
-  object-fit: fill;
-  height: 100%;
-  width: 100%;
-  border: solid black 2px;
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+    border: solid black 2px;
 }

@@ -1,114 +1,114 @@
 .fish-form.section,
 .catch-form.section {
-  justify-content: center;
-
-  background-image: url('/assets/background.png');
-  background-size: cover;
-  padding-bottom: 2%;
-
-  .container {
     justify-content: center;
-    display: flex;
-    flex-direction: column;
 
-    background-color: white;
-    border: solid black 1px;
-    border-radius: 10px;
+    background-image: url('/assets/background.png');
+    background-size: cover;
+    padding-bottom: 2%;
 
-    form {
-      .file {
-        position: relative;
-        display: flex;
+    .container {
         justify-content: center;
-        align-items: start;
+        display: flex;
         flex-direction: column;
 
-        .finished {
-          background: rgba(0, 255, 0, 0.4);
-        }
-      }
-
-      .file>input[type='file'] {
-        display: none;
-      }
-
-      .file>label {
-        padding: 10px 40px;
         background-color: white;
         border: solid black 1px;
-        border-radius: 5px;
-        cursor: pointer;
-        color: black;
-      }
+        border-radius: 10px;
 
-      .file>label:hover {
-        border-color: hsl(0, 0%, 21%);
-      }
+        form {
+            .file {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                flex-direction: column;
 
-      .file>label:active {
-        background-color: hsl(0, 0%, 96%);
-      }
+                .finished {
+                    background: rgba(0, 255, 0, 0.4);
+                }
+            }
 
-      .file>label>i {
-        padding-right: 5px;
-        font-style: normal;
-      }
+            .file > input[type='file'] {
+                display: none;
+            }
 
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+            .file > label {
+                padding: 10px 40px;
+                background-color: white;
+                border: solid black 1px;
+                border-radius: 5px;
+                cursor: pointer;
+                color: black;
+            }
 
-      .row-col {
-        flex-direction: column;
-      }
+            .file > label:hover {
+                border-color: hsl(0, 0%, 21%);
+            }
 
-      .row {
-        position: relative;
+            .file > label:active {
+                background-color: hsl(0, 0%, 96%);
+            }
 
-        display: flex;
-        gap: 15px;
-        padding-top: 15px;
+            .file > label > i {
+                padding-right: 5px;
+                font-style: normal;
+            }
 
-        .fish-name {
-          width: 50%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            .row-col {
+                flex-direction: column;
+            }
+
+            .row {
+                position: relative;
+
+                display: flex;
+                gap: 15px;
+                padding-top: 15px;
+
+                .fish-name {
+                    width: 50%;
+                }
+
+                .fish-info {
+                    width: 100%;
+                }
+
+                .bait {
+                    width: 75%;
+                }
+
+                input,
+                textarea {
+                    border-radius: 5px;
+                    border: 1px grey solid;
+                }
+
+                .image {
+                    max-width: 200px;
+                    max-height: 200px;
+                    object-fit: contain;
+                    overflow: clip;
+                    border: solid black 1px;
+                }
+            }
+
+            .submit-btn {
+                margin-top: 2%;
+                padding-top: 15px;
+                justify-content: center;
+                display: flex;
+            }
         }
-
-        .fish-info {
-          width: 100%;
-        }
-
-        .bait {
-          width: 75%;
-        }
-
-        input,
-        textarea {
-          border-radius: 5px;
-          border: 1px grey solid;
-        }
-
-        .image {
-          max-width: 200px;
-          max-height: 200px;
-          object-fit: contain;
-          overflow: clip;
-          border: solid black 1px;
-        }
-      }
-
-      .submit-btn {
-        margin-top: 2%;
-        padding-top: 15px;
-        justify-content: center;
-        display: flex;
-      }
     }
-  }
 
-  .required::after {
-    content: '*';
-    color: var(--secondary-color);
-    position: absolute;
-    margin-left: 5px;
-  }
+    .required::after {
+        content: '*';
+        color: var(--secondary-color);
+        position: absolute;
+        margin-left: 5px;
+    }
 }

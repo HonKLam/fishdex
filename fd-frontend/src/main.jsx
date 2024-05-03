@@ -18,6 +18,13 @@ import CatchForm from './Components/CatchForm.jsx'
 
 const queryClient = new QueryClient()
 
+/*
+ * Routing
+ *
+ * Wir nutzen React-Router-Dom um unterschiedliche Components/Seiten durch Pfade
+ * zu verbinden.
+ *
+ * */
 const router = createBrowserRouter([
     {
         element: <App />,
@@ -52,6 +59,10 @@ const router = createBrowserRouter([
     },
 ])
 
+/*
+ * Von hier aus entstehen alle weiteren Componenten
+ *
+ */
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>

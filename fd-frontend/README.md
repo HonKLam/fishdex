@@ -1,16 +1,16 @@
 # Setup
 
-- VSCode oder anderen Text-Editor installieren
+-   VSCode oder anderen Text-Editor installieren
 
 Für Code-Formatierung on-save:
 
-- `Prettier`-Plugin installieren
-- `Format on Save` in VSCode aktivieren
+-   `Prettier`-Plugin installieren
+-   `Format on Save` in VSCode aktivieren
 
 Alles was man für JS + React braucht installieren:
 
-- VS-Code plugins
-- `yarn` installieren (sowas wie npm, solltest du kennen, notfalls frag Lam)
+-   VS-Code plugins
+-   `yarn` installieren (sowas wie npm, solltest du kennen, notfalls frag Lam)
 
 Anschließend im `fd-frontend` Ordner in Konsole:
 
@@ -22,13 +22,13 @@ yarn
 
 # Frontend (einzeln) starten
 
-- Konsole öffnen, `fd-frontend` navigieren
+-   Konsole öffnen, `fd-frontend` navigieren
 
 ```
 yarn run dev
 ```
 
-- In der Konsole sollte der Link stehen
+-   In der Konsole sollte der Link stehen
 
 ## Was macht das Frontend?
 

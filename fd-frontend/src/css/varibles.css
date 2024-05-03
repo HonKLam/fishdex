@@ -19,7 +19,7 @@ body {
     background: white;
     max-width: 250px;
     padding: 1.5% 5%;
-    border-radius: 5px ;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -33,5 +33,4 @@ body {
     color: white;
     background: grey;
     border-radius: 0;
-
 }

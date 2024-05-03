@@ -1,27 +1,27 @@
 .activity_container {
-  width: 100%;
-  height: 150px;
-  background-color: #c2f1fc;
-  display: flex;
-  flex-direction: row;
-  margin-right: auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  align-items: center;
-  border: solid black 1px;
-  border-radius: 10px;
+    width: 100%;
+    height: 150px;
+    background-color: #c2f1fc;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    align-items: center;
+    border: solid black 1px;
+    border-radius: 10px;
 }
 
 #date {
-  margin-left: auto;
-  margin-right: 5%;
+    margin-left: auto;
+    margin-right: 5%;
 }
 
 #profile_img {
-  margin-left: 5%;
-  margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.ra_text>h1 {
-  margin: 0;
+.ra_text > h1 {
+    margin: 0;
 }
