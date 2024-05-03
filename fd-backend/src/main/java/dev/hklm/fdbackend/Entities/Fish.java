@@ -1,6 +1,5 @@
 package dev.hklm.fdbackend.Entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.springframework.core.io.ClassPathResource;

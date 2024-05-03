@@ -12,10 +12,7 @@ export default function Header() {
                                 <a href="/fishdex">Fishdex</a>
                             </li>
                             <li>
-                                <a href="/timeline">Blogeinträge</a>
-                            </li>
-                            <li>
-                                <a href="/fish/form">und nochirgendwas</a>
+                                <a href="/timeline">Timeline</a>
                             </li>
                         </ul>
                     </div>

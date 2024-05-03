@@ -1,90 +1,114 @@
-.fish-form.section, .catch-form.section{
+.fish-form.section,
+.catch-form.section {
+  justify-content: center;
+
+  background-image: url('/assets/background.png');
+  background-size: cover;
+  padding-bottom: 2%;
+
+  .container {
     justify-content: center;
-    .container {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border: solid black 1px;
+    border-radius: 10px;
+
+    form {
+      .file {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+
+        .finished {
+          background: rgba(0, 255, 0, 0.4);
+        }
+      }
+
+      .file>input[type='file'] {
+        display: none;
+      }
+
+      .file>label {
+        padding: 10px 40px;
+        background-color: white;
+        border: solid black 1px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: black;
+      }
+
+      .file>label:hover {
+        border-color: hsl(0, 0%, 21%);
+      }
+
+      .file>label:active {
+        background-color: hsl(0, 0%, 96%);
+      }
+
+      .file>label>i {
+        padding-right: 5px;
+        font-style: normal;
+      }
+
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .row-col {
+        flex-direction: column;
+      }
+
+      .row {
+        position: relative;
+
+        display: flex;
+        gap: 15px;
+        padding-top: 15px;
+
+        .fish-name {
+          width: 50%;
+        }
+
+        .fish-info {
+          width: 100%;
+        }
+
+        .bait {
+          width: 75%;
+        }
+
+        input,
+        textarea {
+          border-radius: 5px;
+          border: 1px grey solid;
+        }
+
+        .image {
+          max-width: 200px;
+          max-height: 200px;
+          object-fit: contain;
+          overflow: clip;
+          border: solid black 1px;
+        }
+      }
+
+      .submit-btn {
+        margin-top: 2%;
+        padding-top: 15px;
         justify-content: center;
         display: flex;
-        form {
-            .file {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: start ;
-                flex-direction: column;
-                .finished {
-                    background: rgba(0, 255, 0, 0.4);
-                }
-            }
-
-
-            .file > input[type='file'] {
-                display: none
-            }
-
-            .file > label {
-                padding: 10px 40px;
-                background-color: white;
-                border: solid black 1px;
-                border-radius: 5px;
-                cursor: pointer;
-                color: black;
-            }
-
-            .file > label:hover {
-                border-color: hsl(0, 0%, 21%);
-            }
-
-            .file > label:active {
-                background-color: hsl(0, 0%, 96%);
-            }
-
-            .file > label > i {
-                padding-right: 5px;
-                font-style: normal;
-
-            }
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            .row-col {
-                flex-direction: column;
-            }
-            .row {
-                position: relative;
-
-                display: flex;
-                gap: 15px;
-                padding-top: 15px;
-                .fish-name {
-                    width: 50%;
-                }
-                .fish-info {
-                    width: 100%;
-                }
-                .bait {
-                    width: 75%;
-                }
-                input, textarea{
-                    border-radius: 5px;
-                    border: 1px grey solid;                }
-                .image {
-                    max-width: 250px;
-                    max-height: 250px;
-                    object-fit: contain;
-                    overflow: clip;
-                }
-            }
-            .submit-btn {
-                padding-top: 15px;
-                justify-content: center;
-                display: flex;
-            }
-        }
+      }
     }
-    .required::after {
-        content: "*";
-        color: var(--secondary-color);
-        position: absolute;
-        margin-left: 5px;
-    }
+  }
 
+  .required::after {
+    content: '*';
+    color: var(--secondary-color);
+    position: absolute;
+    margin-left: 5px;
+  }
 }

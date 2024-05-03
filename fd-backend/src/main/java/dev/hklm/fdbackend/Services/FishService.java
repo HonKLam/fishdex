@@ -103,11 +103,10 @@ public class FishService {
 
     public void increaseFishCounter(Long fishId) {
         Fish fish = this.getFish(fishId);
-        Fishdex fishdex = this.getFishdex();
 
         Integer increasedCounter = fish.getCounter() + 1;
         fish.setCounter(increasedCounter);
 
-        fishdexRepository.save(fishdex);
+        fishdexRepository.save(this.getFishdex());
     }
 }

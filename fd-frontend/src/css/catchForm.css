@@ -1,4 +1,10 @@
 .catch-form {
+    .required::after {
+        content: "*";
+        color: var(--secondary-color);
+        position: absolute;
+        margin-left: 5px;
+    }
     .dropdown {
         margin-top: 20px;
         label {
@@ -43,4 +49,5 @@
             margin-left: 5%;
         }
     }
+
 }

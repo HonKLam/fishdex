@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useMutation, useQuery } from 'react-query'
 import { fetchData, postData } from '../utils/api'
 import Button from './General/Button.jsx'
@@ -92,22 +92,20 @@ export default function FishForm() {
   }
   useEffect(() => {
     if (freshwaterChecked && saltwaterChecked) {
-      setWater('saltwater & freshwater') ;
+      setWater('Süß- und Salzwasser')
     } else if (freshwaterChecked) {
-      setWater('freshwater') ;
+      setWater('Süßwasser')
     } else if (saltwaterChecked) {
-      setWater('saltwater');
+      setWater('Salzwasser')
     }
-  });
+  }, [water, freshwaterChecked, saltwaterChecked])
   return (
-    <div className="section fish-form">
-      <div className="container">
+    <div className="section fish-form main_container">
+      <div className="container inner_container">
+        <h1>Fisch hinzufügen</h1>
         <form onSubmit={handleSubmit}>
           <div className="row file">
-            <img
-              src="https://placehold.co/600x400"
-              className="image"
-            />
+            <img src="/assets/bsp.jpg" className="image" />
             <div className="file file--upload">
               <label
                 htmlFor="input-file"

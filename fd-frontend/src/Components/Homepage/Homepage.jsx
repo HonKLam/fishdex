@@ -5,21 +5,21 @@ import { fetchData } from '../../utils/api'
 import { useQuery } from 'react-query'
 
 export default function Homepage() {
-    const { data, isLoading, isError } = useQuery('user-data', () =>
-        fetchData('/user/info/1')
-    )
+  const { data, isLoading, isError } = useQuery('user-data', () =>
+    fetchData('/user/info/1')
+  )
 
-    if (isLoading) return <div></div>
-    if (isError) return <div></div>
+  if (isLoading) return <div></div>
+  if (isError) return <div></div>
 
-    return (
-        <main className={styles.main_container}>
-            {data && (
-                <div className={styles.inner_container}>
-                    <ProfileHeader user={data} />
-                    <RecentPosts user={data} />
-                </div>
-            )}
-        </main>
-    )
+  return (
+    <main className={styles.main_container}>
+      {data && (
+        <div className={styles.inner_container}>
+          <ProfileHeader user={data} />
+          <RecentPosts user={data} />
+        </div>
+      )}
+    </main>
+  )
 }

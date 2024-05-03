@@ -3,8 +3,8 @@
 @import 'footer.css';
 @import 'fishdex-overview.css';
 @import 'add-fish-form.css';
-@import "404.css";
-@import "catchForm.css";
+@import '404.css';
+@import 'catchForm.css';
 
 body {
   margin: 0;
@@ -15,8 +15,9 @@ body {
 
 .container {
   max-width: 1024px;
-  padding: 0 5%;
+  padding: 25px 5%;
   margin: auto;
+  background-color: white;
 }
 
 .section {
