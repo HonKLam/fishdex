@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Service zum Behandeln der Anfragen vom CatchController
+ * Methoden machen genau das, was auch im Controller beschrieben wird
  */
 @Service
 public class CatchService {

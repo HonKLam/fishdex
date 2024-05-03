@@ -27,11 +27,17 @@ public class CatchController {
     @Autowired
     private CatchService catchService;
 
-    // alle Fänge zurückgeben - findById(1), ist das erste Diary der beim Laden erstellt wurde
+    /**
+     * Alle Fänge zurückgeben
+     */
     @GetMapping("/diary")
     public List<Catch> getDiary() { return catchService.getCatchList(); }
 
-    // Information von 1 Catch bekommen
+
+    /**
+     * Information von 1 Catch bekommen
+     * @param catchId catchID die von Frontend übergeben wird
+     */
     @GetMapping("/catch/info/{id}")
     public ResponseEntity<Catch> getCatch(@PathVariable("id") Long catchId) {
         Catch fishCatch = catchService.getCatch(catchId);
@@ -44,6 +50,11 @@ public class CatchController {
     }
 
     // Information von 1 Catch bekommen
+
+    /**
+     * Liste der Fänge von einer FishId zurückgeben
+     * @param fishId von Frontend bereitgestellt
+     */
     @GetMapping("/catch/list/{id}")
     public ResponseEntity<List<Catch>> getCatchListByFishId(@PathVariable("id") Long fishId) {
         List<Catch> catchListByFishId = new ArrayList<>();
@@ -57,7 +68,10 @@ public class CatchController {
         return new ResponseEntity<>(catchListByFishId, HttpStatus.OK);
     }
 
-    // Bild von 1 Catch bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
+    /**
+     * Bild von 1 Catch bekommen mit bestimmter ID
+     * @param catchId von Frontend bereitgestellt
+     */
     @GetMapping("/catch/image/{id}")
     public ResponseEntity<byte[]> getImageByCatchId(@PathVariable("id") Long catchId) {
         byte[] imageData = catchService.getCatchImageById(catchId);
@@ -72,9 +86,10 @@ public class CatchController {
         return new ResponseEntity<>(imageData, headers, HttpStatus.OK);
     }
 
-    /* Frontend sendet JSON in Form des Catchobjekts {"location":"string", ...}
-     -> wird durch @RequestBody zu einem Catch-Objekt gebaut
-     -> Repository holen, Catch hinzufügen, wieder speichern */
+    /**
+     * JSON Catch-Objekt von Frontend zu richtigem Catch-Objekt umwandeln + hinzufügen zur Datenbank
+     * @param fishCatch - Entstandenes Catch-Objekt
+     */
     @PostMapping("/catch")
     public ResponseEntity<Object> addCatch(@RequestBody Catch fishCatch) throws IOException {
         catchService.addCatch(fishCatch);
@@ -82,6 +97,12 @@ public class CatchController {
     }
 
     // Custom-Bild für Catch hinzufügen
+
+    /**
+     * Fang-Bild einem Catch hinzufügen
+     * @param image Bilddatei
+     * @param catchId von Frontend bereitgestellt
+     */
     @PostMapping("/catch/upload/{id}")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long catchId) throws IOException {
         Boolean check = catchService.uploadCatchImage(image, catchId);

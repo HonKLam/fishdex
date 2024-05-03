@@ -26,11 +26,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // alle User zurückgeben - findById(1), ist der erste User der beim Laden erstellt wurde
+    /**
+     * Alle User zurückgeben
+     */
     @GetMapping("/user")
     public List<User> getUserboard() { return userService.getUserList(); }
 
-    // Information von User bekommen
+    /**
+     * Information von 1 User bekommen
+     * @param uid von Frontend bereitgestellt
+     */
     @GetMapping("/user/info/{id}")
     public ResponseEntity<User> getUser(@PathVariable("id") Long uid) {
         User user = userService.getUser(uid);
@@ -42,7 +47,10 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    // Bild vom User bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
+    /**
+     * Bild von 1 User bekommen mit bestimmter ID
+     * @param uid von Frontend bereitgestellt
+     */
     @GetMapping("/user/image/{id}")
     public ResponseEntity<byte[]> getImageByCatchId(@PathVariable("id") Long uid) {
         byte[] imageData = userService.getUserImageById(uid);
@@ -57,16 +65,21 @@ public class UserController {
         return new ResponseEntity<>(imageData, headers, HttpStatus.OK);
     }
 
-    /* Frontend sendet JSON in Form des Userobjekts {"location":"string", ...}
-     -> wird durch @RequestBody zu einem User-Objekt gebaut
-     -> Repository holen, User hinzufügen, wieder speichern */
+    /**
+     * JSON User-Objekt von Frontend zu richtigem User-Objekt umwandeln + hinzufügen zur Datenbank
+     * @param user - Entstandenes User-Objekt
+     */
     @PostMapping("/user")
     public ResponseEntity<Object> addUser(@RequestBody User user) throws IOException {
         userService.addUser(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    // eigenes custom User-Bild hinzufügen
+    /**
+     * User-Bild einem User hinzufügen
+     * @param image Bilddatei
+     * @param uid von Frontend bereitgestellt
+     */
     @PostMapping("/user/upload/{id}")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long uid) throws IOException {
         Boolean check = userService.uploadUserImage(image, uid);

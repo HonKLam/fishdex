@@ -26,13 +26,18 @@ public class FishController {
     @Autowired
     private FishService fishService;
 
-    // alle Fischarten zurückgeben - findById(1) ist der erste Fishdex der beim Laden erstellt wurde
+    /**
+     * Alle Fische zurückgeben
+     */
     @GetMapping("/fishdex")
     public List<Fish> getFishdexList() {
         return fishService.getFishdexList();
     }
 
-    // Information von 1 Fischart bekommen
+    /**
+     * Information von 1 Fish bekommen
+     * @param fishId von Frontend bereitgestellt
+     */
     @GetMapping("/fish/info/{id}")
     public ResponseEntity<Fish> getFish(@PathVariable("id") Long fishId) {
         Fish fish = fishService.getFish(fishId);
@@ -44,7 +49,10 @@ public class FishController {
         return new ResponseEntity<>(fish, HttpStatus.OK);
     }
 
-    // Bild von 1 Fischart bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
+    /**
+     * Bild von 1 Fish bekommen mit bestimmter ID
+     * @param fishId von Frontend bereitgestellt
+     */
     @GetMapping("/fish/image/{id}")
     public ResponseEntity<byte[]> getFishImageById(@PathVariable("id") Long fishId) {
         byte[] imageData = fishService.getFishImageById(fishId);
@@ -59,16 +67,21 @@ public class FishController {
         return new ResponseEntity<>(imageData, headers, HttpStatus.OK);
     }
 
-    /* Frontend sendet JSON in Form des Fischobjekts {"name":"string", "location":"string", ...}
-     -> wird durch @RequestBody zu einem Fish-Objekt gebaut
-     -> Repository holen, fish hinzufügen, wieder speichern */
+    /**
+     * JSON Fish-Objekt von Frontend zu richtigem Fish-Objekt umwandeln + hinzufügen zur Datenbank
+     * @param fish - Entstandenes Fish-Objekt
+     */
     @PostMapping("/fish")
     public ResponseEntity<Object> addFish(@RequestBody Fish fish) throws IOException {
         fishService.addFish(fish);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    // Custom-Bild für Fish hinzufügen
+    /**
+     * Fish-Bild einem Fish hinzufügen
+     * @param image Bilddatei
+     * @param fishId von Frontend bereitgestellt
+     */
     @PostMapping("/fish/upload/{id}")
     public ResponseEntity<?> uploadFishImage(@RequestParam("image") MultipartFile image, @PathVariable("id") Long fishId) throws IOException {
         Boolean check = fishService.uploadFishImage(image, fishId);

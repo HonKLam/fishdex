@@ -42,7 +42,9 @@ public class Application {
 		};
 	}
 
-	// Vordefinierte Daten hier hinzufügen
+	/**
+	 * Vordefinierten Daten mit dieser Methode hinzufügen
+	 */
 	@Bean
 	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository) {
 		return (args) -> {
