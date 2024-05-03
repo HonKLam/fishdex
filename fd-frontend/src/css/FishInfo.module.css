@@ -1,8 +1,10 @@
 .fish_info_container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background-color: white;
   justify-content: center;
+  align-items: center;
   background-image: url('/assets/background.png');
   background-size: cover;
 }
@@ -10,6 +12,7 @@
 .fish_info_inner_container {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   background-color: white;
   height: fit-content;
@@ -66,4 +69,43 @@
 
 #title {
   font-size: 25pt;
+}
+
+.catch_info_container {
+  display: flex;
+  width: 85%;
+  max-height: 250px;
+  flex-direction: row;
+  background-color: #c2f1fc;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  align-items: center;
+  border: solid black 1px;
+  border-radius: 10px;
+}
+
+#catchText>h1 {
+  margin: 0;
+}
+
+#catchText {
+  width: 100%;
+}
+
+.catch_info_container>img {
+  display: flex;
+  margin: 2%;
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 50%;
+  height: 50%;
+}
+
+#date {
+  margin-right: 2%;
+}
+
+#lastCatches {
+  margin-right: auto;
+  margin-left: 8%;
 }

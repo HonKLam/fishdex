@@ -8,7 +8,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.time.ZonedDateTime;
 
 @Entity
@@ -54,7 +53,6 @@ public class Catch {
          Bitte nach POST /catch extra nochmal Fisch-Bild hochladen. */
         ClassPathResource catchPathRessource = new ClassPathResource("img/catch.png");
         this.catchImage = FileCopyUtils.copyToByteArray(catchPathRessource.getInputStream());
-
     }
 
     public Long getId() {

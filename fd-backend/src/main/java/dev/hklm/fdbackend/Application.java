@@ -9,6 +9,9 @@ import dev.hklm.fdbackend.Entities.Userboard;
 import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
 import dev.hklm.fdbackend.Repositories.UserboardRepository;
+import dev.hklm.fdbackend.Services.CatchService;
+import dev.hklm.fdbackend.Services.FishService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -42,13 +45,15 @@ public class Application {
 		};
 	}
 
+	@Autowired
+	private FishService fishService;
+
 	// Hier Tabellen / Repos der DB mit Daten füllen
 	@Bean
-	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository) {
+	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository, FishService fishService) {
 		return (args) -> {
-
-			Fish f1 = new Fish( 0, "Koenigslachs", "Süß- und Salzwasser", "live bait", true, "tasty", 1L );
-			Fish f2 = new Fish(0, "Neon", "Süßwasser", "use a net", false, "colorful", 2L );
+			Fish f1 = new Fish( 1, "Koenigslachs", "Süß- und Salzwasser", "live bait", true, "tasty", 1L);
+			Fish f2 = new Fish(2, "Neon", "Süßwasser", "use a net", false, "colorful", 2L);
 			Fish f3 = new Fish(0, "Weiser Hai", "Salzwasser", "bookworms", false, "smart boi", 3L);
 			List<Fish> fishList = Arrays.asList(f1, f2, f3);
 

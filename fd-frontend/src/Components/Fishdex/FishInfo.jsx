@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom'
 import { fetchData } from '../../utils/api'
 import { useQuery } from 'react-query'
 import Button from '../General/Button'
+import formatDate from '../../utils/date'
 
 // eslint-disable-next-line
 export function loader({ params }) {
@@ -19,6 +20,10 @@ export default function FishInfo() {
 
   const { data, isLoading, isError } = useQuery('fish-info-data', () =>
     fetchData(`/fish/info/${fishId}`)
+  )
+
+  const catchList = useQuery('catch-list-data', () =>
+    fetchData(`/catch/list/${fishId}`)
   )
 
   if (isLoading) return <div></div>
@@ -42,6 +47,28 @@ export default function FishInfo() {
             <p>Anzahl Gefangen: {data.counter}</p>
           </div>
         </div>
+        <div id={styles.lastCatches}>
+          <h3>Meine letzten Fänge</h3>
+        </div>
+        {catchList.data &&
+          catchList.data.map((entry, index) => {
+            return (
+              <div
+                key={index}
+                className={styles.catch_info_container}
+              >
+                <img src={entry.imgUrl} />
+                <div id={styles.catchText}>
+                  <h1>{entry.location}</h1>
+                  <p>{entry.length}cm</p>
+                  <p>{entry.weight}kg</p>
+                </div>
+                <div id={styles.date}>
+                  <h3>{formatDate(entry.catchDate)}</h3>
+                </div>
+              </div>
+            )
+          })}
       </div>
     </div>
   )

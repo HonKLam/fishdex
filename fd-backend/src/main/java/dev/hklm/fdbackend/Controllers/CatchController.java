@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,6 +37,20 @@ public class CatchController {
         }
 
         return new ResponseEntity<>(fishCatch, HttpStatus.OK);
+    }
+
+    // Information von 1 Catch bekommen
+    @GetMapping("/catch/list/{id}")
+    public ResponseEntity<List<Catch>> getCatchListByFishId(@PathVariable("id") Long fishId) {
+        List<Catch> catchListByFishId = new ArrayList<>();
+
+        for(Catch catchEntry : catchService.getCatchList()) {
+            if (catchEntry.getFishId().equals(fishId)) {
+                catchListByFishId.add(catchEntry);
+            }
+        }
+
+        return new ResponseEntity<>(catchListByFishId, HttpStatus.OK);
     }
 
     // Bild von 1 Catch bekommen (wenn keins gesetzt gibt Beispiel-Bild zurück)
