@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller zum Bereitstellen der API-Schnittstellen
+ * für Fishdex-bedingte Aufgaben
+ */
 @RestController
 @CrossOrigin
 public class FishController {

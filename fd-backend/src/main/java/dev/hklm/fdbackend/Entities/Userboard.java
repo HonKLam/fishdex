@@ -16,6 +16,10 @@ public class Userboard {
 
     protected Userboard() {}
 
+    /**
+     * Userboard
+     * @param userList Nutzer
+     */
     public Userboard(List<User> userList) {
         this.userList = userList;
     }

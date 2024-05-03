@@ -9,14 +9,11 @@ import dev.hklm.fdbackend.Entities.Userboard;
 import dev.hklm.fdbackend.Repositories.DiaryRepository;
 import dev.hklm.fdbackend.Repositories.FishdexRepository;
 import dev.hklm.fdbackend.Repositories.UserboardRepository;
-import dev.hklm.fdbackend.Services.CatchService;
 import dev.hklm.fdbackend.Services.FishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -27,11 +24,11 @@ import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Von hier aus wird Backend durch Spring Boot gestartet
+ */
 @SpringBootApplication
 public class Application {
-
-	private static final Logger log = LoggerFactory.getLogger(Application.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
@@ -45,12 +42,9 @@ public class Application {
 		};
 	}
 
-	@Autowired
-	private FishService fishService;
-
-	// Hier Tabellen / Repos der DB mit Daten füllen
+	// Vordefinierte Daten hier hinzufügen
 	@Bean
-	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository, FishService fishService) {
+	public CommandLineRunner initRepos(FishdexRepository fishdexRepository, DiaryRepository diaryRepository, UserboardRepository userboardRepository) {
 		return (args) -> {
 			Fish f1 = new Fish( 1, "Koenigslachs", "Süß- und Salzwasser", "live bait", true, "tasty", 1L);
 			Fish f2 = new Fish(2, "Neon", "Süßwasser", "use a net", false, "colorful", 2L);

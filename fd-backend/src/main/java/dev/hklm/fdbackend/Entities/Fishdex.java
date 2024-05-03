@@ -17,6 +17,10 @@ public class Fishdex {
 
     protected Fishdex() {}
 
+    /**
+     * Der Fishdex, der die Fish-Arten besitzt
+     * @param fishList - Aggregation, Fish-Liste
+     */
     public Fishdex(List<Fish> fishList) {
         this.fishList = fishList;
     }

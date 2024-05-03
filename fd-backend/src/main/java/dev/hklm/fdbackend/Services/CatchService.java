@@ -12,12 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-
+/**
+ * Service zum Behandeln der Anfragen vom CatchController
+ */
 @Service
 public class CatchService {
 
     @Autowired
-    private DiaryRepository diaryRepository;
+    private DiaryRepository diaryRepository; // Datenbank-Tabelle
 
     @Autowired
     private FishService fishService;
@@ -55,6 +57,7 @@ public class CatchService {
         return imageData;
     }
 
+    // Fang hinzufügen
     public void addCatch(Catch fishCatch) throws IOException {
         Diary diary = this.getDiary();
         // Wenn kein Bild, mache das

@@ -11,17 +11,16 @@ import java.io.IOException;
 public class Fish {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id; // id of the fish
+    private Long id; // Von Datenbank erstellt
 
-    private Integer counter; // how many fish of this type have been caught
-    private String name; // name of the fish
-    private String water; // fresh, salt or both
-    private String bait; // which type of bait should be used
-    private Boolean edible; // is the fish edible
-    private String extraInfo; // additional information about the fish
-    private String imgUrl; // link to image of the fish
+    private Integer counter;
+    private String name;
+    private String water;
+    private String bait;
+    private Boolean edible;
+    private String extraInfo;
+    private String imgUrl;
 
-    // this is the IMG data typ thingy
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -29,6 +28,17 @@ public class Fish {
 
     public Fish() {};
 
+    /**
+     * Fischart
+     * @param counter Wie viele Fische bisher gefangen wurden
+     * @param name Name der Fischart
+     * @param water Welches Gewässer
+     * @param bait Welcher Köder wird benutzt
+     * @param edible Essbar
+     * @param extraInfo Beschreibung
+     * @param fishId FishId (generiert von Datenabank)
+     *
+     */
     public Fish(
             Integer counter,
             String name,
@@ -38,7 +48,6 @@ public class Fish {
             String extraInfo,
             Long fishId
     ) throws IOException {
-
         this.counter = counter;
         this.name = name;
         this.water = water;
@@ -47,8 +56,7 @@ public class Fish {
         this.extraInfo = extraInfo;
         this.imgUrl = "http://localhost:8080/fish/image/" + fishId.toString();
 
-        /* Die Properties müssen nicht mitgegeben werden, wenn man POST /fish im Frontend macht.
-         Bitte nach POST /fish extra nochmal Fisch-Bild hochladen. */
+        // Standard-Bild
         ClassPathResource fishPathRessource = new ClassPathResource("img/fish.png");
         this.fishImage = FileCopyUtils.copyToByteArray(fishPathRessource.getInputStream());
     }

@@ -1,10 +1,7 @@
 package dev.hklm.fdbackend.Controllers;
 
-
-import dev.hklm.fdbackend.Entities.Catch;
 import dev.hklm.fdbackend.Services.UserService;
 import dev.hklm.fdbackend.Entities.User;
-import dev.hklm.fdbackend.Entities.Userboard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller zum Bereitstellen der API-Schnittstellen
+ * für Nutzer-bedingte Aufgaben
+ */
 @RestController
 @CrossOrigin
 public class UserController {
@@ -24,7 +25,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
 
     // alle User zurückgeben - findById(1), ist der erste User der beim Laden erstellt wurde
     @GetMapping("/user")

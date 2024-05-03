@@ -40,6 +40,17 @@ public class Catch {
     // ZonedDateTime kann folgendermaßen angelegt werden:
     // ZonedDateTime.parse("2024-04-02T01:10:22+02[Europe/Berlin]")
     // ZonedDateTime.of(2015, 11, 30, 23, 45, 59, 0, ZoneId.of("GMT+02:00")
+
+    /**
+     * Der Fang-Eintrag
+     * @param location Ort
+     * @param length Länge
+     * @param weight Gewicht
+     * @param description Beschreibung
+     * @param catchDate Fang-Datum
+     * @param fishId fishId
+     * @param catchId fangId
+     */
     public Catch(String location, Double length, Double weight, String description, ZonedDateTime catchDate, Long fishId, Long catchId) throws IOException {
         this.location = location;
         this.length = length;
@@ -49,8 +60,7 @@ public class Catch {
         this.fishId = fishId;
         this.imageURL = "http://localhost:8080/catch/image/" + catchId;
 
-        /* Die Properties müssen nicht mitgegeben werden, wenn man POST /catch im Frontend macht.
-         Bitte nach POST /catch extra nochmal Fisch-Bild hochladen. */
+        // Standard-Bild
         ClassPathResource catchPathRessource = new ClassPathResource("img/catch.png");
         this.catchImage = FileCopyUtils.copyToByteArray(catchPathRessource.getInputStream());
     }

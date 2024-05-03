@@ -14,6 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller zum Bereitstellen der API-Schnittstellen
+ * für Timeline-bedingte Aufgaben
+ */
 @RestController
 @CrossOrigin
 public class CatchController {

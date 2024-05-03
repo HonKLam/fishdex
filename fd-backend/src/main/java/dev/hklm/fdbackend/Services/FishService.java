@@ -11,11 +11,14 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Service zum Behandeln der Anfragen vom FishController
+ */
 @Service
 public class FishService {
 
     @Autowired
-    private FishdexRepository fishdexRepository;
+    private FishdexRepository fishdexRepository; // Datenbank
 
     public Fishdex getFishdex() {
         return fishdexRepository.findById(1);
@@ -25,6 +28,7 @@ public class FishService {
         return this.getFishdex().getFishList();
     }
 
+    // Fish bekommen
     public Fish getFish(Long fishId) {
         List<Fish> fishList = this.getFishdexList();
 
@@ -36,9 +40,9 @@ public class FishService {
             }
         }
         return foundFish;
-
     }
 
+    // Bild bekommen mit Id
     public byte[] getFishImageById(Long fishId) {
         List<Fish> fishList = this.getFishdexList();
 
@@ -52,6 +56,7 @@ public class FishService {
         return imageData;
     }
 
+    // Fish hinzufügen
     public void addFish(Fish fish) throws IOException {
         Fishdex fishdex = this.getFishdex();
 
@@ -69,6 +74,7 @@ public class FishService {
         fishdexRepository.save(fishdex);
     }
 
+    // Bild hochladen
     public Boolean uploadFishImage(MultipartFile image, Long fishId) throws IOException {
         if (image.isEmpty() || fishId.toString().isEmpty()) {
             return false;
@@ -101,6 +107,7 @@ public class FishService {
         return true;
     }
 
+    // Counter erhöhen
     public void increaseFishCounter(Long fishId) {
         Fish fish = this.getFish(fishId);
 

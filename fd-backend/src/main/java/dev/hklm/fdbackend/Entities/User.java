@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.FileCopyUtils;
-
 import java.io.IOException;
 
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
@@ -22,7 +20,6 @@ public class User {
     private Integer fishdexId;
     private Integer diaryId;
 
-
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -30,6 +27,16 @@ public class User {
 
     public User() {}
 
+    /**
+     * User
+     * @param location Ort
+     * @param username Nutzername
+     * @param description Beschreibung
+     * @param totalCatches Insgesamte Zahl Fänge
+     * @param uid NutzerID
+     * @param fishdexId fishdexID
+     * @param diaryId diaryID
+     */
     public User(String location, String username, String description, Integer totalCatches, Long uid, Integer fishdexId, Integer diaryId) throws IOException {
         this.location = location;
         this.username = username;

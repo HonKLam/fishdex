@@ -1,6 +1,4 @@
 package dev.hklm.fdbackend.Services;
-import dev.hklm.fdbackend.Entities.Catch;
-import dev.hklm.fdbackend.Entities.Diary;
 import dev.hklm.fdbackend.Entities.User;
 import dev.hklm.fdbackend.Entities.Userboard;
 import dev.hklm.fdbackend.Repositories.UserboardRepository;
@@ -14,11 +12,14 @@ import java.io.IOException;
 import java.util.List;
 
 
+/**
+ * Service zum Behandeln der Anfragen vom UserController
+ */
 @Service
 public class UserService {
 
     @Autowired
-    private UserboardRepository userboardRepository;
+    private UserboardRepository userboardRepository; // Datenbank
 
     public Userboard getUserboard() { return userboardRepository.findById(1); }
 
@@ -53,6 +54,7 @@ public class UserService {
         return imageData;
     }
 
+    // User hinzufügen
     public void addUser(User user) throws IOException {
         Userboard userboard = this.getUserboard();
         // Wenn kein Bild, mache das
@@ -64,9 +66,6 @@ public class UserService {
         }
 
         user.setImgUrl(String.valueOf(this.getUserList().size() + 1));
-
-        // Usercounter erhöhen,wenn ein neuer hinzugefügt wurde
-        // userService.increaseUserCounter(user.getUid());
 
         userboard.addUser(user);
         userboardRepository.save(userboard);

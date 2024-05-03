@@ -1,7 +1,6 @@
 package dev.hklm.fdbackend.Entities;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +16,10 @@ public class Diary {
 
     protected Diary() {}
 
+    /**
+     * Diary/Timeline
+     * @param catchList Aggregation, nimmt einen Catch an
+     */
     public Diary(List<Catch> catchList) {
         this.catchList = catchList;
     }
