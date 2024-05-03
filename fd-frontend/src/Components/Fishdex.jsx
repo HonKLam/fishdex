@@ -6,9 +6,6 @@ export default function Fishdex() {
     const { data, isLoading, isError } = useQuery('data', () =>
         fetchData('/fishdex')
     )
-    if (isLoading !== true && isError !== true) {
-        console.log(data)
-    }
     if (isLoading) return <div>Laden...</div>
     if (isError) return <div>Ein Fehler ist aufgetreten!</div>
     function handleClick() {
